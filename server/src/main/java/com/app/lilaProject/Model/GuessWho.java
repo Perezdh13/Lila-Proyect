@@ -9,8 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Table(name= "data")
-
+@Table(name= "guessWho")
 public class GuessWho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,10 +17,15 @@ public class GuessWho {
     private long id;
     @Column (name = "name", nullable = false)
     private String name;
-    @Column (name = "theme", nullable = false)
-    private String theme;
+    @Column (columnDefinition = "LONGTEXT")
+    private String imgReal;
+    @Column (columnDefinition = "LONGTEXT")
+    private String imgCartoon;
     @Column (name = "description", nullable = false)
     private String description;
-    @Column (columnDefinition = "LONGTEXT")
-    private String Img;
+    @Column(name = "eyes", nullable = false)
+    private String eyes;
+    @Column(name="hair", nullable = false)
+    private String hair;
+    @Column()
 }

@@ -1,20 +1,52 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from '../views/home/HomePage';
-import Login from '../views/login/Login';
+import WordSearchView from '../views/games/gamesViews/WordSearchView'
+import Games from '../views/games/Games';
+import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
+import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
+import Learn from '../views/learn/Learn';
+import Admin from '../views/admin/Admin';
+import SingUpView from '../views/admin/adminViews/SingUpView'
+import StudentListView from '../views/admin/adminViews/StudentListView'
+import Logged from '../views/logged/Logged';
 
 function Router() {
   const router = createBrowserRouter([{
     path: "/",
     element: <HomePage />
   }, {
-    path: "/login",
-    element: <Login /> 
+    path: "/logged",
+    element: <Logged />
+  }, {
+    path: "/games",
+    element: <Games />
+  }, {
+    path: "/games/wordSearch",
+    element: <WordSearchView />
+  }, {
+    path: "games/guessWho",
+    element: <GuessWhoView />
+  }, {
+    path: "/games/createYourAvatar",
+    element: <CreateYourAvatarView />
+  }, {
+    path: "/learn",
+    element: <Learn />
+  }, {
+    path: "/admin",
+    element: <Admin />
+  }, {
+    path: "/admin/singUp",
+    element: <SingUpView />
+  }, {
+    path: "/admin/studentList",
+    element: <StudentListView />
   }
   ])
   return (
     <div>
-       <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </div>
   )
 }
