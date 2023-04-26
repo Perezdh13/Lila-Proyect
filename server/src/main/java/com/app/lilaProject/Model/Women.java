@@ -9,23 +9,24 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Table(name= "womans")
-public class Womans {
+@Table(name= "women")
+public class Women {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id", nullable = false)
+    @Column(name = "id")
     private long id;
-    @Column (name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
-    @Column (columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String imgReal;
-    @Column (columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String imgCartoon;
-    @Column (name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
-    @Column(name = "eyes", nullable = false)
+    @Column(name = "eyes")
     private String eyes;
-    @Column(name="hair", nullable = false)
+    @Column(name = "hair")
     private String hair;
-
 }
