@@ -8,7 +8,7 @@ public class LilaProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LilaProjectApplication.class, args);
-		System.out.print("hello lila");
+		System.out.print("hello lila games");
 	}
 
 }
