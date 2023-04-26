@@ -1,13 +1,13 @@
 import React from 'react'
 import AskSeccion from '../../../components/games/guessWho/AskSeccion'
 import Players from '../../../components/games/guessWho/Players'
-import CardsBlock from '../../../components/games/guessWho/CardsBlock'
+import WomenGroup from '../../../components/games/guessWho/WomenGroup'
 
 function GuessWhoView() {
   return (
     <div>GuessWhoView
       <AskSeccion />
-      <CardsBlock />
+      <WomenGroup />
       <Players />
     </div>
   )

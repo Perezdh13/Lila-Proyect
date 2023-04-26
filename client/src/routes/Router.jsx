@@ -10,6 +10,7 @@ import Admin from '../views/admin/Admin';
 import SingUpView from '../views/admin/adminViews/SingUpView'
 import StudentListView from '../views/admin/adminViews/StudentListView'
 import Logged from '../views/logged/Logged';
+import AvatarsView from '../views/admin/adminViews/AvatarsView';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -42,6 +43,9 @@ function Router() {
   }, {
     path: "/admin/studentList",
     element: <StudentListView />
+  }, {
+    path: "/admin/avatars",
+    element: <AvatarsView />
   }
   ])
   return (
