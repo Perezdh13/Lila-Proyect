@@ -9,8 +9,8 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Table(name= "guessWho")
-public class GuessWho {
+@Table(name= "woman")
+public class Woman {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id", nullable = false)
@@ -27,5 +27,5 @@ public class GuessWho {
     private String eyes;
     @Column(name="hair", nullable = false)
     private String hair;
-    @Column()
+
 }
