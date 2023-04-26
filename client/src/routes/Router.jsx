@@ -42,6 +42,9 @@ function Router() {
   }, {
     path: "/admin/studentList",
     element: <StudentListView />
+  }, {
+    path: "/admin/avatars",
+    element 
   }
   ])
   return (
