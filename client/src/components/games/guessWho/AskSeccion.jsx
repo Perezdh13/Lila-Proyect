@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from 'react'
-import IA from './IA';
+import HTTPService from '../../../services/HTTPService';
 
 export const QuestionSelectValue = React.createContext();
 function AskSeccion() {
-  const questions = ["¿tiene el pelo rubio","¿tiene el pelo moreno?","¿tiene los ojos azules?", "¿tiene los ojos negros?"]
-  const [questionSelect, setQuestionSelect] = useState('')
+  const [questions, setQuestions] = useState([])
+  const [questionType, setQuestionType] = useState('')
+  const [questionValue, setQuestionValue] = useState('')
+  
 
-console.log(questionSelect);
+  const handleButtonClick = (question) => {
+    setQuestionType(question.type);
+    setQuestionValue(question.value);
+  }
+  useEffect(() => {
+    HTTPService().getQuestions().then((data) => {
+      setQuestions(data);
+    });
+  }, [])
 
-const handleButtonClick = (question) => {
-  setQuestionSelect(question);
-}
-
-
-useEffect(() => {
-  const customEvent = new CustomEvent("questionSelected", {
-    detail: questionSelect
-  });
-  document.dispatchEvent(customEvent);
-}, [questionSelect]);
+  useEffect(() => {
+    const customEvent = new CustomEvent("questionSelected", {
+      detail:{
+        type: questionType,
+        value: questionValue
+      } 
+    });
+    document.dispatchEvent(customEvent);
+  }, [questionValue]);
 
   return (
-    <div style={{display:"flex",justifyContent:"center"}}>
-     <div style={{backgroundColor:"grey",width:"40vw",height:"10vh"}}> 
-     {questions.map((question,index) =>
-       <button key={index} onClick={() => handleButtonClick(question)}>{question}</button>
-       )}
-     </div>
-    
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ backgroundColor: "grey", width: "40vw", height: "10vh" }}>
+        {questions.map((question, index) =>
+          <button key={index} onClick={() => handleButtonClick( question)}>{question.ask}</button>
+        )}
+      </div>
+
 
     </div>
   )

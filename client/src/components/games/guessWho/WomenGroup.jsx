@@ -5,12 +5,26 @@ import HTTPService from '../../../services/HTTPService'
 
 function WomenGroup() {
   const [woman, setWoman] = useState([])
-
-  useEffect(() => {
+  const [iASelect,setIASelect] = useState('')
+ 
+ useEffect(() => {
     HTTPService().getAllData().then((data) => {
       setWoman(data);
-    })
+    });    
   }, [])
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * woman.length);
+    const randomWoman = woman[randomIndex];
+   setIASelect(randomWoman);
+  }, [woman]);
+
+  useEffect(() => {
+    const customEvent = new CustomEvent("randomWoman", {
+      detail: iASelect
+    });
+    document.dispatchEvent(customEvent);
+  }, [iASelect]);
 
   return (
     <div className='womenGroup' style={{display:"flex", justifyContent:"center"}}>

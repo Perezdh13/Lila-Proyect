@@ -25,8 +25,8 @@ public class Women {
     private String imgCartoon;
     @Column(name = "description")
     private String description;
-    @Column(name = "eyes")
-    private String eyes;
-    @Column(name = "hair")
-    private String hair;
+    @Column(name = "ojos")
+    private String ojos;
+    @Column(name = "pelo")
+    private String pelo;
 }
