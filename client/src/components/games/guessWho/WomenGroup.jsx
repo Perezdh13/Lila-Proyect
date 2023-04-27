@@ -5,22 +5,16 @@ import HTTPService from '../../../services/HTTPService'
 
 function WomenGroup() {
   const [woman, setWoman] = useState([])
-  console.table(woman)
 
   useEffect(() => {
-    HTTPService().getAllData()
-      .then(data => {
-        setWoman(data);
-        console.table(data)
-      })
-      .catch(error => {
-        console.log(error);
-      })
+    HTTPService().getAllData().then((data) => {
+      setWoman(data);
+    })
   }, [])
 
   return (
-    <div>
-      <div>
+    <div className='womenGroup' style={{display:"flex", justifyContent:"center"}}>
+      <div style={{display:"grid", gridTemplateColumns:"repeat(5,1fr)",columnGap:"1vw",rowGap:"1vh"}}>
         {woman.map((woman) =>
           <Card
             woman={woman}
