@@ -1,32 +1,21 @@
-package com.app.lilaProject.Model;
+package com.app.lilaProject.DTO;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
-@Table(name= "/woman")
-public class CModelWoman {
+public class CUserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private long id;
-    @Column(name = "name", nullable = false)
+
     private String name;
-    @Column(columnDefinition = "LONGTEXT")
+
     private String imgReal;
-    @Column(columnDefinition = "LONGTEXT")
+
     private String imgCartoon;
-    @Column(name = "description", nullable = false)
+
     private String description;
-    @Column(name = "eyes", nullable = false)
+
     private String eyes;
-    @Column(name = "hair", nullable = false)
+
     private String hair;
 
     public long getId() {
@@ -83,5 +72,18 @@ public class CModelWoman {
 
     public void setHair(String hair) {
         this.hair = hair;
+    }
+
+    public CUserDto(long id, String name, String imgReal, String imgCartoon, String description, String eyes, String hair) {
+        this.id = id;
+        this.name = name;
+        this.imgReal = imgReal;
+        this.imgCartoon = imgCartoon;
+        this.description = description;
+        this.eyes = eyes;
+        this.hair = hair;
+    }
+
+    public CUserDto() {
     }
 }
