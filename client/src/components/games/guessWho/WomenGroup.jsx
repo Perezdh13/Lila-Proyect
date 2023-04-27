@@ -6,6 +6,9 @@ import HTTPService from '../../../services/HTTPService'
 function WomenGroup() {
   const [woman, setWoman] = useState([])
   const [iASelect,setIASelect] = useState('')
+  const [discardedCard, setdiscardedCard] = useState('')
+
+ 
  
  useEffect(() => {
     HTTPService().getAllData().then((data) => {
@@ -24,10 +27,10 @@ function WomenGroup() {
       detail: iASelect
     });
     document.dispatchEvent(customEvent);
-  }, [iASelect]);
+  });
 
   return (
-    <div className='womenGroup' style={{display:"flex", justifyContent:"center"}}>
+    <div  style={{display:"flex", justifyContent:"center"}}>
       <div style={{display:"grid", gridTemplateColumns:"repeat(5,1fr)",columnGap:"1vw",rowGap:"1vh"}}>
         {woman.map((woman) =>
           <Card

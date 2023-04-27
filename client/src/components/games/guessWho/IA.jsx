@@ -4,11 +4,11 @@ import hacker from '../../../assets/img/hacker.png';
 function IA() {
 
   const [iAWoman, setIAWoman] = useState('');
-  const [questionType, setQuestionType] = useState('');//tipo de atributo: ojos, pelo..
-  const [questionValue, setQuestionValue] = useState('');//valor de atributo: rubio, azules..
+  const [questionType, setQuestionType] = useState('');
+  const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('');
+console.log(iAWoman);
 
-//esto es parte de la logica del juego
   useEffect(() => {
     (iAWoman[questionType] === questionValue)
       ? setAnswer('si tiene ' + questionType + ' ' + questionValue)
@@ -30,8 +30,7 @@ function IA() {
 
   return (
     <div>
-      <img src={hacker} style={{ width: "10vw" }} />
-      <p>{answer}</p>
+     {answer}
     </div>
   );
 }
