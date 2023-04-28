@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import hacker from '../../../assets/img/hacker.png';
-
+import Bocadillo from '../../../assets/img/Bocadillo.png'
 function IA() {
 
   const [iAWoman, setIAWoman] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
-  const [answer, setAnswer] = useState('');
-console.log(iAWoman);
+  const [answer, setAnswer] = useState("...");
+
 
   useEffect(() => {
     (iAWoman[questionType] === questionValue)
@@ -29,8 +28,9 @@ console.log(iAWoman);
   }, [iAWoman]);
 
   return (
-    <div>
-     {answer}
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <img style={{ width: "10vw" }} src={Bocadillo} />
+      <p style={{ position: "absolute", width:"6vw", marginTop:"3vh",fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{answer}</p>
     </div>
   );
 }

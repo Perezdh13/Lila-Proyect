@@ -10,7 +10,8 @@ function GuessWhoView() {
       <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)"}}>
         <Player />
         <AskSeccion />
-        <IA />
+        <div style={{display:"none"}} ><IA /></div>
+        
       </div>
       <WomenGroup />
     </div>
