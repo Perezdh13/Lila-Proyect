@@ -1,7 +1,7 @@
 package com.app.lilaProject.Controller;
 
 
-import com.app.lilaProject.Model.Women;
+import com.app.lilaProject.Model.CModelWomen;
 import com.app.lilaProject.service.CServiceWoman;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,21 +17,21 @@ public class CControllerWoman {
     CServiceWoman cServiceWoman;
 
     @GetMapping("")
-    private List<Women> readConsultation(){
+    private List<CModelWomen> readConsultation(){
         return cServiceWoman.readConsultation();
     }
     @GetMapping("/{id}")
-    private Optional<Women> readConsultationId(@PathVariable("id") Long id){
+    private Optional<CModelWomen> readConsultationId(@PathVariable("id") Long id){
         return cServiceWoman.readConsultationId(id);
     }
 
     @PostMapping("")
-    private void createConsultation(@RequestBody Women model){
+    private void createConsultation(@RequestBody CModelWomen model){
         cServiceWoman.createConsultation(model);
 
     }
     @PutMapping("/{id}")
-    private void updateConsultation(@RequestBody Women model, @PathVariable("id")Long id){
+    private void updateConsultation(@RequestBody CModelWomen model, @PathVariable("id")Long id){
         cServiceWoman.updateConsultation(model,id);
     }
 }
