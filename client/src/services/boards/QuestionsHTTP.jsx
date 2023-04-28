@@ -1,7 +1,7 @@
 import axios from "axios";
 import { urlDB } from "../UrlDB";
 
-export const Questions = () => {
+export const QuestionsHTTP = () => {
     
 
     const getQuestions = async () => {

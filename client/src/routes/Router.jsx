@@ -7,10 +7,9 @@ import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
 import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
 import Learn from '../views/learn/Learn';
 import Admin from '../views/admin/Admin';
-import SingUpView from '../views/admin/adminViews/SingUpView'
-import StudentListView from '../views/admin/adminViews/StudentListView'
 import Logged from '../views/logged/Logged';
-import AvatarsView from '../views/admin/adminViews/AvatarsView';
+import SingUpView from '../views/admin/singUpView/SingUpView';
+import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -41,11 +40,8 @@ function Router() {
     path: "/admin/singUp",
     element: <SingUpView />
   }, {
-    path: "/admin/studentList",
-    element: <StudentListView />
-  }, {
-    path: "/admin/avatars",
-    element: <AvatarsView />
+    path: "/admin/controlData/addWoman",
+    element: <AddWomanView />
   }
   ])
   return (

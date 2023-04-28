@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import IA from './IA';
-import { Questions } from '../../../services/boards/Questions';
-import Bocadillo from '../../../assets/img/Bocadillo.png'
+import { QuestionsHTTP } from '../../../services/boards/QuestionsHTTP';
 export const QuestionSelectValue = React.createContext();
 function AskSeccion() {
   const [questions, setQuestions] = useState([]);
@@ -21,7 +20,7 @@ function AskSeccion() {
   }
 
   useEffect(() => {
-    Questions().getQuestions().then((data) => {
+    QuestionsHTTP().getQuestions().then((data) => {
       setQuestions(data);
     });
   }, [])

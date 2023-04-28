@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-import { Women } from '../../../services/boards/Women'
+import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 
 function WomenGroup() {
   const [woman, setWoman] = useState([]);
@@ -21,7 +21,7 @@ console.log(discardedCard);
   };
 
   useEffect(() => {
-    Women().getAllData().then((data) => {
+    WomenHTTP().getAllData().then((data) => {
       setWoman(data);
     });    
   }, []);
@@ -39,11 +39,7 @@ console.log(discardedCard);
     document.dispatchEvent(customEvent);
   });
 
-  const handleDiscard = () => {
-    if (selectedCard) {
-      setDiscardedCard(selectedCard);
-    }
-  };
+
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
