@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import InputPhoto from '../common/InputPhoto';
+import InputPhoto from '../../common/InputPhoto'
 import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 import { Link } from 'react-router-dom';
 
