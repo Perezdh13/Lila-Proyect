@@ -1,14 +1,19 @@
 import React from 'react'
 import AskSeccion from '../../../components/games/guessWho/AskSeccion'
-import Players from '../../../components/games/guessWho/Players'
-import CardsBlock from '../../../components/games/guessWho/CardsBlock'
+import Player from '../../../components/games/guessWho/Player'
+import WomenGroup from '../../../components/games/guessWho/WomenGroup'
+import IA from '../../../components/games/guessWho/IA'
 
 function GuessWhoView() {
   return (
-    <div>GuessWhoView
-      <AskSeccion />
-      <CardsBlock />
-      <Players />
+    <div>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)"}}>
+        <Player />
+        <AskSeccion />
+        <div style={{display:"none"}} ><IA /></div>
+        
+      </div>
+      <WomenGroup />
     </div>
   )
 }

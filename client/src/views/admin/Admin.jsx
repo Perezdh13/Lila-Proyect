@@ -19,6 +19,11 @@ function Admin() {
                     <button>Listado y gestion de alumnos</button>
                 </Link>
             </div>
+            <div >
+                <Link to='controlData/addWoman'>
+                    <button >Gestionar mujeres</button>
+                </Link>
+            </div>
         </div>
     )
 }
