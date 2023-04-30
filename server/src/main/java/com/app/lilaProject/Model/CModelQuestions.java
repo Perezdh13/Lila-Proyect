@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString
 //@Table(name= "questions")
+@Document(collection = "questions")
 public class CModelQuestions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
