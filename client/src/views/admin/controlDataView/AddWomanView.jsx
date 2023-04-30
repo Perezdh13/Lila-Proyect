@@ -6,7 +6,7 @@ function AddWomanView() {
   return (
     <div>
       <MenuControlData />
-        <AddWoman />
+      <AddWoman />
     </div>
   )
 }

@@ -10,6 +10,8 @@ import Admin from '../views/admin/Admin';
 import Logged from '../views/logged/Logged';
 import SingUpView from '../views/admin/singUpView/SingUpView';
 import AddWomanView from '../views/admin/controlDataView/AddWomanView';
+import MenuControlData from '../components/admin/controlData/MenuControlData';
+import WomenTableView from '../views/admin/controlDataView/WomenTableView';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -40,7 +42,13 @@ function Router() {
     path: "/admin/singUp",
     element: <SingUpView />
   }, {
-    path: "/admin/controlData/addWoman",
+    path: "/admin/controlData",
+    element: <MenuControlData />
+  }, {
+    path: "/admin/controlData/womenTable",
+    element: <WomenTableView />
+  },{
+    path:"/admin/controlData/womenTable/create",
     element: <AddWomanView />
   }
   ])

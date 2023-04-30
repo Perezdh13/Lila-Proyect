@@ -20,8 +20,8 @@ function Admin() {
                 </Link>
             </div>
             <div >
-                <Link to='controlData/addWoman'>
-                    <button >Gestionar mujeres</button>
+                <Link to='controlData'>
+                    <button >Gestionar Datos</button>
                 </Link>
             </div>
         </div>
