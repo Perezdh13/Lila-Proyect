@@ -2,14 +2,15 @@ package com.app.lilaProject.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-@Table(name= "questions")
+//@Table(name= "questions")
 public class CModelQuestions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
