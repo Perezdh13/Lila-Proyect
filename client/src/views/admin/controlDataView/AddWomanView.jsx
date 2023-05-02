@@ -11,4 +11,4 @@ function AddWomanView() {
   )
 }
 
-export default AddWomanView
+export default AddWomanView 
