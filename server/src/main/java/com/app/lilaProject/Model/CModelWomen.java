@@ -29,4 +29,6 @@ public class CModelWomen {
     private String ojos;
     @Column(name = "pelo")
     private String pelo;
+
+    
 }

@@ -3,29 +3,32 @@ import Bocadillo from '../../../assets/img/Bocadillo.png'
 function IA() {
 
   const [iAWoman, setIAWoman] = useState('');
+  const [iAQuestion, setIAQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
-  const [answer, setAnswer] = useState("...");
-
-
+  const [answer, setAnswer] = useState('');
+  
   useEffect(() => {
     (iAWoman[questionType] === questionValue)
       ? setAnswer('si tiene ' + questionType + ' ' + questionValue)
       : setAnswer('No tiene ' + questionType + ' ' + questionValue);
   }, [questionType, questionValue]);
 
-
   useEffect(() => {
-    const updateQuestionSelect = event => {
+    const upDateQuestionSelect = event => {
       setQuestionType(event.detail.type);
       setQuestionValue(event.detail.value);
     };
-    const updateIAWoman = event => {
+    const upDateIAWoman = event => {
       setIAWoman(event.detail);
-    }
-    document.addEventListener("questionSelected", updateQuestionSelect);
-    document.addEventListener("randomWoman", updateIAWoman);
-  }, [iAWoman]);
+    };
+    const upDateIAQuestion = event => {
+      setIAQuestion(event.detail);
+    };
+    document.addEventListener("questionSelected", upDateQuestionSelect);
+    document.addEventListener("randomWoman", upDateIAWoman);
+    document.addEventListener("questionSelected", upDateIAQuestion);
+  }, [iAWoman]); 
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>

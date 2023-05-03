@@ -7,9 +7,7 @@ function WomenGroup() {
   const [iASelect, setIASelect] = useState('');
   const [discardedCard, setDiscardedCard] = useState('');
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cardStyle, setCardStyle] = useState({ display: "block" })
-
-console.log(discardedCard);
+  const [cardStyle, setCardStyle] = useState({ display: "block" });
 
   const selectCard = (woman) => {
     setSelectedCard(woman);

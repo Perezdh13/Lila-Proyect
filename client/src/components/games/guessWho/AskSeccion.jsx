@@ -4,6 +4,7 @@ import { QuestionsHTTP } from '../../../services/boards/QuestionsHTTP';
 export const QuestionSelectValue = React.createContext();
 function AskSeccion() {
   const [questions, setQuestions] = useState([]);
+  const [iAQuestion, setIAQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [styleQuestion, setStyleQuestion] = useState({display:"block"});
@@ -16,7 +17,7 @@ function AskSeccion() {
 
   const resetValues = () => {
     setQuestionType('');
-    setQuestionValue()
+    setQuestionValue('');
   }
 
   useEffect(() => {
@@ -26,14 +27,26 @@ function AskSeccion() {
   }, [])
 
   useEffect(() => {
-    const customEvent = new CustomEvent("questionSelected", {
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    const randomQuestion = questions[randomIndex];
+    setIAQuestion(randomQuestion);
+  }, [questions]);
+
+
+  useEffect(() => {
+    const questionSelected = new CustomEvent("questionSelected", {
       detail: {
         type: questionType,
         value: questionValue
       }
     });
-    document.dispatchEvent(customEvent);
-  }, [questionValue]);
+    const questionIA = new CustomEvent("questionIA", {
+      detail: iAQuestion
+    })
+    document.dispatchEvent(questionSelected);
+    document.dispatchEvent(questionIA)
+  }, [questionValue,iAQuestion]);
+
 
   useEffect(() => {
     if (questionType === '') {

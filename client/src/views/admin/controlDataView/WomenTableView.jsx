@@ -5,7 +5,7 @@ import WomenTable from '../../../components/admin/controlData/women/WomenTable'
 function WomenTableView() {
   return (
     <div>
-        <MenuControlData />
+      <MenuControlData />
       <WomenTable />
 
     </div>
