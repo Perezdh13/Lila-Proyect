@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Bocadillo from '../../../assets/img/Bocadillo.png'
-function IA() {
+function IA(props) {
 
   const [iAWoman, setIAWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('');
-  
-  useEffect(() => {
+  const iAQuestionProps = props.question
+  console.log(iAQuestion);
+console.log(iAQuestionProps);
+ 
+useEffect(() => {
     (iAWoman[questionType] === questionValue)
       ? setAnswer('si tiene ' + questionType + ' ' + questionValue)
       : setAnswer('No tiene ' + questionType + ' ' + questionValue);
@@ -25,9 +28,9 @@ function IA() {
     const upDateIAQuestion = event => {
       setIAQuestion(event.detail);
     };
-    document.addEventListener("questionSelected", upDateQuestionSelect);
+    document.addEventListener("selectedQuestion", upDateQuestionSelect);
     document.addEventListener("randomWoman", upDateIAWoman);
-    document.addEventListener("questionSelected", upDateIAQuestion);
+    document.addEventListener("questionIA", upDateIAQuestion);
   }, [iAWoman]); 
 
   return (
