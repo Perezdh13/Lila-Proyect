@@ -1,15 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Bocadillo from '../../../assets/img/Bocadillo.png'
-function IA(props) {
+function IA() {
 
   const [iAWoman, setIAWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('');
-  const iAQuestionProps = props.question
   console.log(iAQuestion);
-console.log(iAQuestionProps);
  
 useEffect(() => {
     (iAWoman[questionType] === questionValue)

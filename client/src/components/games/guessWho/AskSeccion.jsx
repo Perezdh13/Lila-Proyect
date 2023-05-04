@@ -30,7 +30,7 @@ function AskSeccion() {
     const randomIndex = Math.floor(Math.random() * questions.length);
     const randomQuestion = questions[randomIndex];
     setIAQuestion(randomQuestion);
-  }, [questionType]);
+  }, [questionType, questionValue]);
 
   useEffect(() => {
     const questionSelected = new CustomEvent("selectedQuestion", {
@@ -72,7 +72,7 @@ function AskSeccion() {
         </div>
         <div style={styleAnswer}>
 
-          <IA question={iAQuestion} />
+          <IA />
 
         </div>
       </div>
