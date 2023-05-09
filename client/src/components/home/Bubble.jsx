@@ -3,7 +3,8 @@ import BubbleRight from "../../assets/img/BubbleRight.png"
 import BubbleFinal from "../../assets/img/BubbleFinal.png"
 import './Bubble.css'
 import '../../views/styles/Styles.css'
-import '../../views/home/HomePage'
+import '../../views/home/HomePageView'
+import { Link } from 'react-router-dom';
 
 function Bubble() {
   const [texto, setTexto] = useState('Hola,  <br/> ¿Cómo estás?');
@@ -58,7 +59,9 @@ function Bubble() {
                 Contraseña
               </label>
                 <input type='password' value={contraseña} onChange={(e) => setContraseña(e.target.value)} style={{position:"relative"}}/>
+                <Link to="/logged">
               <button type='submit' style={{marginRight:"2.5rem"}}>Enviar</button>
+                </Link>
             </form>
           </div>
         )}

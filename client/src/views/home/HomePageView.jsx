@@ -11,9 +11,9 @@ import Robot from '../../assets/img/Robot.png'
 function HomePage() {
   return (
     <div> 
-       <Link to="/logged">
+       
        <img className='robot' src={Robot} style={{position: 'absolute', height:"30rem", marginLeft:"19rem", marginTop:"8rem"}}/>
-      </Link> 
+    
       
       <Bubble/>
       </div>
