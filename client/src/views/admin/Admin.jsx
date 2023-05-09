@@ -3,28 +3,26 @@ import { Link } from 'react-router-dom'
 
 function Admin() {
     return (
-        <div>
-            <div >
+        <div style={{ backgroundColor: "purple", position: "fixed", width: "15vw", height: "100%", padding: "20px", borderRight: "1px solid #dee2e6" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "5vh", margin: "5vh" }}>
                 <Link to='singUp'>
-                    <button >Dar de alta a un nuevo alumno</button>
+                   
                 </Link>
-            </div>
-            <div >
+
                 <Link to='avatars'>
-                    <button>Ver avatares de los alumnos</button>
+                    <button className="btn btn-secondary">Ver avatares de los alumnos</button>
                 </Link>
-            </div>
-            <div >
+
                 <Link to='studentList'>
-                    <button>Listado y gestion de alumnos</button>
+                    <button className="btn btn-secondary">Listado y gestion de alumnos</button>
                 </Link>
-            </div>
-            <div >
+
                 <Link to='controlData'>
-                    <button >Gestionar Datos</button>
+                    <button className="btn btn-secondary">Gestionar Datos</button>
                 </Link>
             </div>
         </div>
+
     )
 }
 

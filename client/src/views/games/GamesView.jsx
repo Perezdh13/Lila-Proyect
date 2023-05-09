@@ -8,23 +8,24 @@ function GamesView() {
 
 
   return (
-    <div style={{display:"flex"}}>
-      <div className='guessWho'>
-        <Link to='guessWho'>
-          <img src={guessWho} style={{width:"20vw"}}/>
-        </Link>
-      </div>
-      <div className='searchWord'>
-        <Link to='wordSearch'>
-          <img src={wordSearch} style={{width:"20vw"}}/>
-        </Link>
+    <div>
+      <div style={{ display: "flex" }}>
+        <div className='guessWho'>
+          <Link to='guessWho'>
+            <img src={guessWho} style={{ width: "20vw", margin:"5vw" }} />
+          </Link>
+        </div>
+        <div className='searchWord'>
+          <Link to='wordSearch'>
+            <img src={wordSearch} style={{ width: "19vw", margin: "7vw" }} />
+          </Link>
+        </div>
       </div>
       <div className='createYourAvatar'>
         <Link to='createYourAvatar'>
-          <img src={createAvatar} style={{width:"20vw"}}/>
+          <img src={createAvatar} style={{ width: "25vw", marginLeft:"18vw" }} />
         </Link>
       </div>
-
     </div>
   )
 }

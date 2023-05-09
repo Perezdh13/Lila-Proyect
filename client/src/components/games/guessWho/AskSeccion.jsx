@@ -119,7 +119,7 @@ function AskSeccion() {
               </div>
             </div>
             <div style={{opacity:"0.5"}}>
-              <h2> que quieres hacer ahora</h2>
+              <h2> </h2>
 
             </div>
           </div>
