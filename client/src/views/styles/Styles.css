@@ -1,0 +1,27 @@
+body{
+    background-image: url(../../assets/img/ImageFont.png);
+    /* background-attachment: fixed;
+    background-position: center center; */
+    height:100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    margin-bottom: 0;
+    
+    
+    }
+    
+    button{
+      background-color: #5f93e8;
+      color: white;
+      border: solid 2px #000;
+      border-radius: 50px;     
+      margin-top: 50px;
+      text-align: center;
+    }
+
+  
+
+    
