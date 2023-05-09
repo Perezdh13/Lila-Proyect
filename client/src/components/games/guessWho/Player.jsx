@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-import hacker from '../../../assets/img/hacker.png'
+import secretWoman from '../../../assets/img/secretWoman.jpg'
 
 function Player() {
   const [women, setWomen] = useState('');
@@ -62,11 +62,11 @@ function Player() {
   })
 
   return (
-    <div style={{ width: "25vh", height: "20vh", marginTop: "10vh", marginLeft: "5vw" }}>
+    <div style={{ width: "7vw", margin:"5vw" }}>
         
       <div style={styleUser}>
         <Card
-          imgCartoon={hacker}
+          imgCartoon={secretWoman}
           />
       </div>
       {womanSelect ? (

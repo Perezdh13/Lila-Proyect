@@ -5,7 +5,7 @@ import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png'
 export const QuestionSelectValue = React.createContext();
 function AskSeccion() {
   const [questions, setQuestions] = useState([]);
-  const [playerQuestion, setPlayerQuestion] = useState(''); console.log(playerQuestion);
+  const [playerQuestion, setPlayerQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [isUserTurn, setIsUserTurn] = useState(true);
@@ -72,6 +72,7 @@ function AskSeccion() {
       setTimeout(() => setStylePlayerAnswer({ display: "block" }), 2000)
     }
   })
+
   useEffect(() => {
     if (questionValue === '') {
       setStyleQuestion({ display: "block" });
@@ -116,6 +117,10 @@ function AskSeccion() {
                 </div>
                 <IA />
               </div>
+            </div>
+            <div style={{opacity:"0.5"}}>
+              <h2> que quieres hacer ahora</h2>
+
             </div>
           </div>
         </div>
