@@ -29,19 +29,25 @@ function WomenGroup() {
     const randomWoman = woman[randomIndex];
     setIASelect(randomWoman);
   }, [woman]);
+ 
+
 
   useEffect(() => {
-    const customEvent = new CustomEvent("randomWoman", {
+    const iAWoman = new CustomEvent("randomWoman", {
       detail: iASelect
     });
-    document.dispatchEvent(customEvent);
+    const women = new CustomEvent("women", {
+      detail: woman
+    })
+    document.dispatchEvent(iAWoman);
+    document.dispatchEvent(women);
   });
 
 
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", columnGap: "1vw", rowGap: "1vh" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", columnGap: "1vw", rowGap: "1vh" }}>
         {woman.map((woman) => (
           <div >
             <Card 

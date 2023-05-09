@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 function Card(props) {
 const [cardStyle,setCardStyle] = useState({display:"block"})
-
 const changeStyle = () => {
   setCardStyle({display:"block",opacity:"0.5"})
 }

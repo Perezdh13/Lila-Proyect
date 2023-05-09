@@ -5,12 +5,12 @@ import WomenGroup from '../../../components/games/guessWho/WomenGroup'
 
 function GuessWhoView() {
   return (
-    <div>
-      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)"}}>
+    <div style={{backgroundColor:"#A582AF",width:"100vw", height:"100vh", margin:0 }}>
+      <div style={{display:"flex"}}>
         <Player />
         <AskSeccion />        
-      </div>
-      <WomenGroup />
+      </div >
+      <WomenGroup/>
     </div>
   )
 }

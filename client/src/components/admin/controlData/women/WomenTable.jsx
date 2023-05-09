@@ -13,8 +13,10 @@ function WomenTable() {
     }))
     const header = ['Nombre', 'Descripcion', 'Nacionalidad'];
 
-    console.log(women);
-
+const deleteWoman = () => {
+    WomenHTTP().deleteWoman().then()
+}
+     
     useEffect(() => {
         WomenHTTP().getAllData().then((res) => {
             setWomen(res)
@@ -31,7 +33,7 @@ function WomenTable() {
                     <img src={addWoman} style={{ width: "5vh", marginLeft:"60vw" }} />
                 </Link>
             </div>
-            <Table head={header} row={womenValues} />
+            <Table head={header} row={womenValues} delete={deleteWoman} />
         </div>
     )
 }

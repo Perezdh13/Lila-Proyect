@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function HomePage() {
   return (
-    <div> HomePage
+    <div> 
       <Link to="/logged">
       <button>Vamos a jugar</button>
       </Link>

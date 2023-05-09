@@ -15,7 +15,7 @@ function MenuControlData() {
       
       <div className={"collapse" + (open ? " show" : "")} style={{ backgroundColor:"purple", position: "fixed", width: "15vw",height:"100%", padding: "20px", borderRight: "1px solid #dee2e6" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "5vh", margin: "5vh" }}>
-          <Link to = "womenTable">
+          <Link to = "/admin/controlData/womenTable">
             <button className="btn btn-secondary">Gestion mujeres</button>
           </Link>
             <button className="btn btn-secondary">Gestion Palabras</button>
