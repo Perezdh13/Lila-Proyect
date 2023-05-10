@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 function App() {
   return (
    <div className="App" style={{background: "radial-gradient(1300px at center, #FFFFFF,#8C52FF)", height: "100vh"}}>
-      <img src={logoLila} style={{position:"absolute", marginLeft:"65vw"}}/>
+      <img src={logoLila} style={{position:"absolute", marginLeft:"65vw", marginTop:"8vh"}}/>
      <Router />
     </div>
   );
