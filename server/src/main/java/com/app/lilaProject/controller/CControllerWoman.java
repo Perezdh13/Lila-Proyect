@@ -34,4 +34,10 @@ public class CControllerWoman {
     private void updateConsultation(@RequestBody CModelWomen model, @PathVariable("id")Long id){
         cServiceWoman.updateConsultation(model,id);
     }
+@DeleteMapping(path = "/{id}")
+public String deleteConsultation(@PathVariable Long id) { return cServiceWoman.deleteUserById(id);
+}
+
+
+
 }

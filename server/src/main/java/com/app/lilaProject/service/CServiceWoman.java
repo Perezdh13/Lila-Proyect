@@ -37,4 +37,20 @@ public class CServiceWoman {
     public void deleteConsultation(Long id) {
         iRepositoryWoman.deleteById(id);
     }
+
+public void deleteConsultation(Long id) {
+    iRepositoryWoman.deleteById(id);
+}
+
+public String deleteUserById(Long id) {
+    try {
+        iRepositoryWoman.deleteById(id);
+        return "Borrado con éxito" + id;
+    } catch (Exception error) {
+        return "No se ha podido borrar" + error;
+    }
+}
+
+
+
 }

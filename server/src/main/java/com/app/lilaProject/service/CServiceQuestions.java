@@ -29,4 +29,15 @@ public class CServiceQuestions {
         Optional<CModelQuestions> model = iRepositoryQuestions.findById(id);
         return model;
     }
+
+public String deleteUserById(Long id) {
+    try {
+        iRepositoryQuestions.deleteById(id);
+        return "Borrado con éxito" + id;
+    } catch (Exception error) {
+        return "No se ha podido borrar" + error;
+    }
+}
+
+
 }

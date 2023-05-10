@@ -24,4 +24,10 @@ public class CControllerQuestions {
     private void createQuestion(@RequestBody CModelQuestions model){
         cServiceQuestions.createQuestion(model);
     }
+
+    @DeleteMapping(path = "/{id}")
+public String deleteConsultation(@PathVariable Long id) { return cServiceQuestions.deleteUserById(id);
+}
+
+
 }
