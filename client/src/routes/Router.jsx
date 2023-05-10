@@ -12,6 +12,8 @@ import SingUpView from '../views/admin/singUpView/SingUpView';
 import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/WomenTableView';
+import EditWoman from '../components/admin/controlData/women/EditWoman';
+import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -27,7 +29,7 @@ function Router() {
     path: "/games/wordSearch",
     element: <WordSearchView />
   }, {
-    path: "games/guessWho",
+    path: "/games/guessWho",
     element: <GuessWhoView />
   }, {
     path: "/games/createYourAvatar",
@@ -50,6 +52,9 @@ function Router() {
   },{
     path:"/admin/controlData/womenTable/create",
     element: <AddWomanView />
+  },{
+    path:"/admin/controlData/womenTable/edit",
+    element: <EditWomanView/>
   }
   ])
   return (

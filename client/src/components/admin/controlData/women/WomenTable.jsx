@@ -10,10 +10,11 @@ function WomenTable() {
         name: value.name,
         description: value.description,
         nation: value.ojos
+        
     }))
     const header = ['Nombre', 'Descripcion', 'Nacionalidad'];
 
-const deleteWoman = () => {
+const deleteWoman = (id) => {
     WomenHTTP().deleteWoman().then()
 }
      
@@ -33,9 +34,9 @@ const deleteWoman = () => {
                     <img src={addWoman} style={{ width: "5vh", marginLeft:"60vw" }} />
                 </Link>
             </div>
-            <Table head={header} row={womenValues} delete={deleteWoman} />
+            <Table head={header} row={womenValues} delete={deleteWoman} edit = {"edit "} />
         </div>
     )
 }
 
-export default WomenTable
+export default WomenTable  

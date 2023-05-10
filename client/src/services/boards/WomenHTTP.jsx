@@ -12,10 +12,22 @@ export const WomenHTTP = () => {
     return response
    }
 
+   const deletewoman = async (id) => {
+    const response = await axios.delete(`${urlDB}/woman/${id}`);
+    return response
+   }
+
+   const getWomanById = async (id) => {
+    const response = await axios.get(`${urlDB}/woman/${id}`);
+    return response
+   }
+
   return {
     getAllData,
-    createWoman, 
-
+    createWoman,
+    deletewoman, 
+    getWomanById,
   };
-};
+}; 
+
 
