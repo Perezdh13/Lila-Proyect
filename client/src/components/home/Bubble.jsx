@@ -41,7 +41,7 @@ function Bubble() {
   };
 
   return (
-    <div className='Bubble'>
+    <div className='Bubble'style={{margin:"0px"}}>
       <div className='container' style={{marginRight:"0px"}}>
         <div className='texto-contenedor' style={{width: "25vw", height:"15vh", position:"relative"}}>
           <img src={BubbleRight} style={{width:"25vw", position:'absolute'}}/>
