@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Table(props) {
 
-
+const id = props.id
   
 
   
