@@ -5,18 +5,16 @@ import addWoman from '../../../../assets/img/addWoman.png'
 import { Link } from 'react-router-dom';
 
 function WomenTable() {
-    const [women, setWomen] = useState([])
+    const [women, setWomen] = useState([]); console.log(women);
     const womenValues = women.map(value => ({
         name: value.name,
         description: value.description,
         nation: value.ojos
         
     }))
-    const header = ['Nombre', 'Descripcion', 'Nacionalidad'];
+    const header = ['Nombre', 'Descripcion'];
 
-
-
-const deleteWoman = (id) => {
+const deleteWoman = () => {
     WomenHTTP().deleteWoman().then()
 }
      
@@ -36,10 +34,38 @@ const deleteWoman = (id) => {
                     <img src={addWoman} style={{ width: "5vh", marginLeft:"60vw" }} />
                 </Link>
             </div>
-            <Table women={women} 
+            <div className="table-responsive" style={{ width: "50vw", margin: "auto" }}>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        {header.map((header, index) => (
+                            <th key={index}>{header}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {women.map((row, index) => (
+                        <tr key={index}>
+                            <td>{row.name}</td>
+                            <td>{row.description}</td>
+                            
+                            <td>
+                                <Link to={`edit/${row.id}`}>
+                                    <button type="button" className="btn btn-primary">Editar</button>
+                                </Link>
+                                <button onClick={deleteWoman} type="button" className="btn btn-danger">Eliminar</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+            {/* <Table 
+            women={women}
+            id={women.id}
             head={header} 
             row={womenValues} 
-            delete={deleteWoman} />
+            delete={deleteWoman}  /> */}
         </div>
     )
 }

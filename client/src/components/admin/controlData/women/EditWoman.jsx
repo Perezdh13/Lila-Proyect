@@ -21,23 +21,19 @@ function EditWoman() {
             imgReal: imgReal,
             ojos: eyes,
             pelo: hair
-        };      
+        };
     }
 
-    useEffect ((id) =>{
-        WomenHTTP().getWomanById(id).then(data =>{
-            setName(data.name),
-            setDescription(data.description),
-            setImgCartoon(data.imgcartoon),
-            setImgReal(data.imgreal),
-            setEyes(data.eyes),
-            setHair(data.hair)
+    useEffect(() => {
+        WomenHTTP().getWomanById().then((data) => {
+            setName(data.name)
         })
-    }) 
+
+    })
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
-             <Form
+            <Form
                 Name={setName}
                 Description={setDescription}
                 ImgReal={setImgReal}
@@ -45,17 +41,17 @@ function EditWoman() {
                 Eyes={setEyes}
                 Hair={setHair}
             />
-                    <Link to="/">
-                        <button onClick={() => editWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
-                    </Link>
-                    
-                    
+            <Link to="/">
+                <button onClick={() => editWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
+            </Link>
+
+
         </div>
     )
 }
 
-export default EditWoman 
- 
+export default EditWoman
+
 
 
 
