@@ -7,7 +7,7 @@ import backgroundGame from '../../../assets/img/fondoJuego.png'
 
 function GuessWhoView() {
   return (
-    <div style={{backgroundImage:`url(${backgroundGame})`,width:"100vw", height:"100vh", margin:0 }}>
+    <div>
       <div style={{display:"flex"}}>
         <Player />
         <AskSeccion />       

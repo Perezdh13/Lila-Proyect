@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 function App() {
   return (
-    <div className="App" style={{width: '100vw', height: '100vh', zIndex: '-1', backgroundImage: `url(${fondo})`, backgroundPosition: 'center'}}>
+    <div className="App" style={{background:"linear-gradient(to right top, #8C52FF, #FFFFFF)", height:"100vh"}}>
      <Router />
     </div>
   );
