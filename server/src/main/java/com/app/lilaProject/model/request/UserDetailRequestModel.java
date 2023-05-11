@@ -1,10 +1,7 @@
 package com.app.lilaProject.model.request;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
-
-public class CModelUser {
+public class UserDetailRequestModel {
 
     private String firstName;
     private String lastName;

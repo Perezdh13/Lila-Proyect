@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 @Entity
 @Table(name = "users")
-public class CEntityUser implements Serializable {
+public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = 1l;
     @Id
@@ -23,7 +23,7 @@ public class CEntityUser implements Serializable {
     @Column(nullable = false)
     private String encryptedPassword;
 
-    public CEntityUser() {
+    public UserEntity() {
 
     }
 
@@ -75,7 +75,7 @@ public class CEntityUser implements Serializable {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public void save(CEntityUser cEntityUser) {
+    public void save(UserEntity cEntityUser) {
     }
 
 }
