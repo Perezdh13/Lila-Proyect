@@ -51,7 +51,7 @@ const deleteWoman = () => {
                             <td>{row.description}</td>
                             
                             <td>
-                                <Link to={`women/${row.id}`}>
+                                <Link to={`edit/${row.id}`}>
                                     <button type="button" className="btn btn-primary">Editar</button>
                                 </Link>
                                 <button onClick={deleteWoman} type="button" className="btn btn-danger">Eliminar</button>
