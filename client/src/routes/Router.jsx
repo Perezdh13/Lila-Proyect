@@ -52,7 +52,7 @@ function Router() {
     path:"/admin/controlData/womenTable/create",
     element: <AddWomanView />
   },{
-    path:"/admin/controlData/womenTable/edit/${id}",
+    path:"/admin/controlData/womenTable/edit/:id",
     element: <EditWomanView/>
   }
   ])

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Form from '../../../common/Form';
 import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
 
 
 
-
 function EditWoman() {
+
+    const [data,setData] = useState('')
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [imgCartoon, setImgCartoon] = useState('');
@@ -14,36 +15,27 @@ function EditWoman() {
     const [eyes, setEyes] = useState('');
     const [hair, setHair] = useState('');
 
-    const editWoman = (event) => {
-        const womanValues = {
-            name: name,
-            description: description,
-            imgCartoon: imgCartoon,
-            imgReal: imgReal,
-            ojos: eyes,
-            pelo: hair
-        };
+    const { id } = useParams();
+console.log(data);
+    useEffect(() => {
+        WomenHTTP().getWomanById(id).then((data) => {
+            setData(data)
+        })
+    }, [id])
+
+    const editWoman=()=>{
+
     }
 
-   useEffect(() => {
-        WomenHTTP().getWomanById().then((data) => {
-            console.log(data);
-        })
-    })  
 
- 
 
-    
+
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
             <Form
-                Name={name}
-                Description={description}
-                ImgReal={imgReal}
-                ImgCartoon={imgCartoon}
-                Eyes={eyes}
-                Hair={hair}
+
+
             />
 
             <Link to="/">
