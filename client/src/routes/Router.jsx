@@ -12,7 +12,6 @@ import SingUpView from '../views/admin/singUpView/SingUpView';
 import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/WomenTableView';
-import EditWoman from '../components/admin/controlData/women/EditWoman';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
 
 function Router() {

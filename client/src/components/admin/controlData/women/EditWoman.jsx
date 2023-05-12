@@ -5,6 +5,7 @@ import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
 
 
 
+
 function EditWoman() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -24,35 +25,35 @@ function EditWoman() {
         };
     }
 
-    useEffect(() => {
+   useEffect(() => {
         WomenHTTP().getWomanById().then((data) => {
-            setName(data.name)
+            console.log(data);
         })
+    })  
 
-    })
+ 
 
+    
     return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+
             <Form
-                Name={setName}
-                Description={setDescription}
-                ImgReal={setImgReal}
-                ImgCartoon={setImgCartoon}
-                Eyes={setEyes}
-                Hair={setHair}
+                Name={name}
+                Description={description}
+                ImgReal={imgReal}
+                ImgCartoon={imgCartoon}
+                Eyes={eyes}
+                Hair={hair}
             />
+
             <Link to="/">
                 <button onClick={() => editWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
             </Link>
-
-
         </div>
     )
 }
 
 export default EditWoman
-
-
 
 
 

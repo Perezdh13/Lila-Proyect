@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
+
 function Table(props) {
  
     const id = props.id
@@ -23,7 +24,7 @@ function Table(props) {
                                 <td key={index}>{value}</td>
                             ))}
                             <td>
-                                <Link to={`edit/${props.id}`}>
+                                <Link to={`woman/${props.id}`}>
                                     <button type="button" className="btn btn-primary">Editar</button>
                                 </Link>
                                 <button onClick={props.delete} type="button" className="btn btn-danger">Eliminar</button>

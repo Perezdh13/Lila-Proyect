@@ -4,6 +4,7 @@ import Table from '../../../common/Table';
 import addWoman from '../../../../assets/img/addWoman.png'
 import { Link } from 'react-router-dom';
 
+
 function WomenTable() {
     const [women, setWomen] = useState([]); console.log(women);
     const womenValues = women.map(value => ({
@@ -50,7 +51,7 @@ const deleteWoman = () => {
                             <td>{row.description}</td>
                             
                             <td>
-                                <Link to={`edit/${row.id}`}>
+                                <Link to={`women/${row.id}`}>
                                     <button type="button" className="btn btn-primary">Editar</button>
                                 </Link>
                                 <button onClick={deleteWoman} type="button" className="btn btn-danger">Eliminar</button>
