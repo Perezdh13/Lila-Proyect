@@ -19,7 +19,7 @@ export const WomenHTTP = () => {
 
    const getWomanById = async (id) => {
     const response = await axios.get(`${urlDB}/woman/${id}`);
-    return response
+    return response.data
    }
 
   return {

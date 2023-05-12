@@ -7,6 +7,8 @@ import axios from 'axios';
 
 
 function EditWoman() {
+
+    const [data,setData] = useState('')
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [imgCartoon, setImgCartoon] = useState('');
@@ -15,15 +17,15 @@ function EditWoman() {
     const [hair, setHair] = useState('');
 
     const { id } = useParams();
-
+console.log(data);
     useEffect(() => {
         WomenHTTP().getWomanById(id).then((data) => {
-            setName(data.data.name)
+            setData(data)
         })
     }, [id])
 
     const editWoman=()=>{
-        
+
     }
 
 
@@ -32,12 +34,8 @@ function EditWoman() {
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
             <Form
-            // Name={melocotones}
-            // Description={description}
-            // ImgReal={imgReal}
-            // ImgCartoon={imgCartoon}
-            // Eyes={eyes}
-            // Hair={hair}
+
+
             />
             <Link to="/">
                 <button onClick={() => editWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
