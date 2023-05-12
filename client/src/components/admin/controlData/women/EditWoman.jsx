@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Form from '../../../common/Form';
 import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
+import axios from 'axios';
 
 
 
@@ -13,33 +14,30 @@ function EditWoman() {
     const [eyes, setEyes] = useState('');
     const [hair, setHair] = useState('');
 
-    const editWoman = (event) => {
-        const womanValues = {
-            name: name,
-            description: description,
-            imgCartoon: imgCartoon,
-            imgReal: imgReal,
-            ojos: eyes,
-            pelo: hair
-        };
-    }
+    const { id } = useParams();
 
     useEffect(() => {
-        WomenHTTP().getWomanById().then((data) => {
-            setName(data.name)
+        WomenHTTP().getWomanById(id).then((data) => {
+            setName(data.data.name)
         })
+    }, [id])
 
-    })
+    const editWoman=()=>{
+        
+    }
+
+
+
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
             <Form
-                Name={setName}
-                Description={setDescription}
-                ImgReal={setImgReal}
-                ImgCartoon={setImgCartoon}
-                Eyes={setEyes}
-                Hair={setHair}
+            // Name={melocotones}
+            // Description={description}
+            // ImgReal={imgReal}
+            // ImgCartoon={imgCartoon}
+            // Eyes={eyes}
+            // Hair={hair}
             />
             <Link to="/">
                 <button onClick={() => editWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
