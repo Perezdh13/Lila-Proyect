@@ -18,5 +18,5 @@ public class LilaProjectApplication {
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
 }
+
