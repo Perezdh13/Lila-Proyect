@@ -1,10 +1,8 @@
 package com.app.lilaProject.repository;
 
-import com.app.lilaProject.entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import com.app.lilaProject.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface UserRepository extends CrudRepository<UserEntity, Long> {
-    UserEntity findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByEmail(String email);
 }
