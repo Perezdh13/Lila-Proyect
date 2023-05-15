@@ -22,6 +22,8 @@ function Player() {
     })
 
 
+    
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * women.length);
     const randomWoman = women[randomIndex];
