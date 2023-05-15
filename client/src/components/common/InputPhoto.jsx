@@ -28,16 +28,15 @@ function InputPhoto({setUrlImg}) {
                 context.drawImage(image, 0, 0);
                 const base64 = canvas.toDataURL();
                 setBase64(base64);
-                setUrlImg(base64)
+                setUrlImg(base64);
             };
         }
-    }, [imagePreview]);
+    }, [imagePreview, setUrlImg]);
 
     return (
         <div>
-            <textarea onChange={(e)=> setUrlImg(e.target.value)} value={base64} required class="form-control" placeholder="Añade una foto"
-                                id="photo"/>
-        <input type="file" onChange={handleFileChange} />
+            <textarea onChange={(e)=> setUrlImg(e.target.value)} value={base64} required className="form-control" placeholder="Añade una foto" id="photo"/>
+            <input type="file" onChange={handleFileChange} />
         </div>
     );
 }
