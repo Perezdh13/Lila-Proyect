@@ -5,9 +5,9 @@ import secretWoman from '../../../assets/img/secretWoman.jpg'
 function Player() {
   const [women, setWomen] = useState('');
   const [womanSelect, setWomanSelect] = useState('');
-  const [iAQuestion, setIAQuestion] = useState('');
-  const [iAQuestionType, setIAQuestionType] = useState('');
-  const [iAQuestionValue, setIAQuestionValue] = useState('')
+  const [iAQuestion, setIAQuestion] = useState('');console.log(iAQuestion);
+  const [iAQuestionType, setIAQuestionType] = useState('');console.log(iAQuestionType);
+  const [iAQuestionValue, setIAQuestionValue] = useState('');console.log(iAQuestionValue);
   const [styleUser, setStyleUser] = useState({ display: "block" });
   const [styleWoman, setStyleWoman] = useState({ display: "none" });
   const [playerAnswer, setPlayerAnswer] = useState('');
@@ -35,15 +35,15 @@ function Player() {
     document.addEventListener("women", upDateWomen)
   }, [women])
 
-  useEffect(() => {
-    (iAQuestion === '') ? setIAQuestionType('') :
-      setIAQuestionType(iAQuestion.type)
-      setIAQuestionValue(iAQuestion.value)
-  })
+  // useEffect(() => {
+  //   (iAQuestion === '') ? setIAQuestionType('') :
+  //     setIAQuestionType(iAQuestion.type)
+  //     setIAQuestionValue(iAQuestion.value)
+  // })
 
 
-  setTimeout(() => (setStyleUser({ display: "none" }),
-    setStyleWoman({ display: "block" })), 3000)
+  // setTimeout(() => (setStyleUser({ display: "none" }),
+  //   setStyleWoman({ display: "block" })), 3000)
 
 
   useEffect(() => {
@@ -53,6 +53,8 @@ function Player() {
     document.dispatchEvent(playerAnswerEvent)
     const upDateIAQuestion = event => {
       setIAQuestion(event.detail)
+      setIAQuestionType(event.detail.type)
+      setIAQuestionValue(event.detail.value)
     }
     const gameTurn = event => {
       setIsUserTurn(event.detail);

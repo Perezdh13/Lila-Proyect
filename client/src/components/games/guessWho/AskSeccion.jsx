@@ -6,8 +6,8 @@ export const QuestionSelectValue = React.createContext();
 function AskSeccion(props) {
   const [questions, setQuestions] = useState([]);
   const [playerQuestion, setPlayerQuestion] = useState('');
-  const [questionType, setQuestionType] = useState('');
-  const [questionValue, setQuestionValue] = useState('');
+  const [questionType, setQuestionType] = useState('');console.log(questionType);
+  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
   const [isUserTurn, setIsUserTurn] = useState(true);
   const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" });
   const [playerAnswer, setPlayerAnswer] = useState('');
@@ -25,12 +25,12 @@ function AskSeccion(props) {
   const resetValues = () => {
     setQuestionValue('');
     setQuestionType('');
+    const callSelectRandomQuestion = new CustomEvent("callSelectRandomQuestion")
+    window.dispatchEvent(callSelectRandomQuestion)
   }
 
   const changeTurn = () => {
     setIsUserTurn(false)
-    const callSelectRandomQuestion = new CustomEvent("callSelectRandomQuestion")
-    window.dispatchEvent(callSelectRandomQuestion)
   }
   useEffect(() => {
     QuestionsHTTP().getQuestions().then((data) => {
@@ -41,7 +41,7 @@ function AskSeccion(props) {
  ////// Custon Event ///////
 
  useEffect(() => {
-    const questionIA = new CustomEvent("questionsIA", {
+    const questionIA = new CustomEvent("dataQuestions", {
       detail: questions
     })
     document.dispatchEvent(questionIA)
