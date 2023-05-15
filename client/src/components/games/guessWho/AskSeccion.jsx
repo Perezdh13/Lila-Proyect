@@ -6,8 +6,8 @@ export const QuestionSelectValue = React.createContext();
 function AskSeccion(props) {
   const [questions, setQuestions] = useState([]);
   const [playerQuestion, setPlayerQuestion] = useState('');
-  const [questionType, setQuestionType] = useState('');console.log(questionType);
-  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
+  const [questionType, setQuestionType] = useState('');
+  const [questionValue, setQuestionValue] = useState('');
   const [isUserTurn, setIsUserTurn] = useState(true);
   const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" });
   const [playerAnswer, setPlayerAnswer] = useState('');
@@ -74,7 +74,7 @@ function AskSeccion(props) {
   useEffect(() => {
     if (isUserTurn === false) {
       setTimeout(() => (setIsUserTurn(true), setStylePlayerAnswer({ display: "none" })), 8000)
-      setTimeout(() => setStylePlayerAnswer({ display: "block" }), 2000)
+      setTimeout(() => setStylePlayerAnswer({ display: "block" }), 4000)
     }
   },[isUserTurn])
 

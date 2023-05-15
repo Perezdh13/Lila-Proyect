@@ -4,10 +4,11 @@ import AskSeccion from './AskSeccion';
 
 function IA(props) {
   const [iAWoman, setIAWoman] = useState('');
-  const [iAQuestion, setIAQuestion] = useState(''); console.log(iAQuestion);
-  const [questions, setQuestions] = useState(''); console.log(questions);
-  const [questionType, setQuestionType] = useState('');console.log(questionType);
-  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
+  const [questionsSelected, setQuestionsSelected] = useState([])
+  const [iAQuestion, setIAQuestion] = useState('');
+  const [questions, setQuestions] = useState(''); 
+  const [questionType, setQuestionType] = useState('');
+  const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('...');console.log(answer);
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
@@ -31,6 +32,7 @@ function IA(props) {
   })
   
   const selectRandomQuestion = () => {
+    setIAQuestion('')
     }
   
   useEffect(() => {

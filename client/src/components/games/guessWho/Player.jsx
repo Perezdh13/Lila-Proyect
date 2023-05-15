@@ -42,8 +42,8 @@ function Player() {
   // })
 
 
-  // setTimeout(() => (setStyleUser({ display: "none" }),
-  //   setStyleWoman({ display: "block" })), 3000)
+   setTimeout(() => (setStyleUser({ display: "none" }),
+    setStyleWoman({ display: "block" })), 3000)
 
 
   useEffect(() => {
