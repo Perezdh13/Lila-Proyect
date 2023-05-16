@@ -1,6 +1,6 @@
 package com.app.lilaProject.service;
 
-import com.app.lilaProject.Model.CModelWomen;
+import com.app.lilaProject.entity.CModelWomen;
 import com.app.lilaProject.repository.IRepositoryWoman;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

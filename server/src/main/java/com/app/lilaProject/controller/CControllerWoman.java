@@ -1,7 +1,7 @@
 package com.app.lilaProject.Controller;
 
 
-import com.app.lilaProject.Model.CModelWomen;
+import com.app.lilaProject.entity.CModelWomen;
 import com.app.lilaProject.service.CServiceWoman;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

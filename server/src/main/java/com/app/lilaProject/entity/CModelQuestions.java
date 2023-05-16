@@ -1,4 +1,4 @@
-package com.app.lilaProject.Model;
+package com.app.lilaProject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
