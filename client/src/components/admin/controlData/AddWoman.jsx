@@ -6,9 +6,9 @@ import Form from '../../common/Form';
 
 
 function AddWoman() {
-    const [name, setName] = useState('');console.log(name);
+    const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [imrCartoo, setImgCartoon] = useState('');
+    const [imgCartoon, setImgCartoon] = useState('');
     const [imgReal, setImgReal] = useState('');
     const [eyes, setEyes] = useState('');
     const [hair, setHair] = useState('');
@@ -17,7 +17,7 @@ function AddWoman() {
         const womanValues = {
             name: name,
             description: description,
-            imgCartoon: imrCartoo,
+            imgCartoon: imgCartoon,
             imgReal: imgReal,
             ojos: eyes,
             pelo: hair

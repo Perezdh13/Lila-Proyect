@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
-import Table from '../../../common/Table';
 import addWoman from '../../../../assets/img/addWoman.png'
-import { Link } from 'react-router-dom';
-
+import { Link, useParams } from 'react-router-dom';
+import { WomenDelete } from '../../../../services/boards/Women.jsx/WomenDelete';
 function WomenTable() {
     const [women, setWomen] = useState([]); console.log(women);
     const womenValues = women.map(value => ({
         name: value.name,
         description: value.description,
-        nation: value.ojos
-        
+        nation: value.ojos        
     }))
     const header = ['Nombre', 'Descripcion'];
 
-const deleteWoman = () => {
-    WomenHTTP().deleteWoman().then()
+const deleteWoman = (id) => {
+    WomenDelete().deleteWoman(id)
+    alert("mujer eliminada")
 }
      
     useEffect(() => {
@@ -53,7 +52,7 @@ const deleteWoman = () => {
                                 <Link to={`edit/${row.id}`}>
                                     <button type="button" className="btn btn-primary">Editar</button>
                                 </Link>
-                                <button onClick={deleteWoman} type="button" className="btn btn-danger">Eliminar</button>
+                                <button onClick={()=>deleteWoman(row.id)} type="button" className="btn btn-danger" >Eliminar</button>
                             </td>
                         </tr>
                     ))}

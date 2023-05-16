@@ -28,13 +28,12 @@ public class CServiceWoman {
         return model;
     }
 
-    public void updateConsultation(CModelWomen model, Long id){
-        model.setId(id);
+    public void updateConsultation(CModelWomen model){
         iRepositoryWoman.save(model);
-
     }
 
-    public void deleteConsultation(Long id) {
+    public CModelWomen deleteWoman(Long id) {
         iRepositoryWoman.deleteById(id);
+        return null;
     }
 }
