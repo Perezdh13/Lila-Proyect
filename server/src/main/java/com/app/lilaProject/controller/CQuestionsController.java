@@ -1,6 +1,6 @@
 package com.app.lilaProject.Controller;
 
-import com.app.lilaProject.entity.CModelQuestions;
+import com.app.lilaProject.entity.CQuestionsModel;
 import com.app.lilaProject.Service.CServiceQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,18 +10,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/questions")
 @CrossOrigin("*")
-public class CControllerQuestions {
+public class CQuestionsController {
     @Autowired
     CServiceQuestions cServiceQuestions;
 
     @GetMapping("")
-    private List <CModelQuestions> readQuestion() {
+    private List <CQuestionsModel> readQuestion() {
 
         return cServiceQuestions.readQuestion();
     }
 
     @PostMapping("")
-    private void createQuestion(@RequestBody CModelQuestions model){
+    private void createQuestion(@RequestBody CQuestionsModel model){
         cServiceQuestions.createQuestion(model);
     }
 }

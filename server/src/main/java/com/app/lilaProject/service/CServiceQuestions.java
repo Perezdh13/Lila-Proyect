@@ -1,7 +1,7 @@
 package com.app.lilaProject.Service;
 
-import com.app.lilaProject.entity.CModelQuestions;
-import com.app.lilaProject.repository.IRepositoryQuestions;
+import com.app.lilaProject.entity.CQuestionsModel;
+import com.app.lilaProject.repository.IQuestionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,21 +12,21 @@ import java.util.Optional;
 @Service
 public class CServiceQuestions {
     @Autowired
-    private IRepositoryQuestions iRepositoryQuestions;
+    private IQuestionsRepository iQuestionsRepository;
 
 
 
-    public void createQuestion(CModelQuestions model){
-        iRepositoryQuestions.save(model);
+    public void createQuestion(CQuestionsModel model){
+        iQuestionsRepository.save(model);
     }
 
-    public List<CModelQuestions> readQuestion(){
-        List<CModelQuestions> models = new ArrayList<CModelQuestions>(iRepositoryQuestions.findAll());
+    public List<CQuestionsModel> readQuestion(){
+        List<CQuestionsModel> models = new ArrayList<CQuestionsModel>(iQuestionsRepository.findAll());
         return models;
 
     }
-    public Optional<CModelQuestions> readQuestionId(Long id){
-        Optional<CModelQuestions> model = iRepositoryQuestions.findById(id);
+    public Optional<CQuestionsModel> readQuestionId(Long id){
+        Optional<CQuestionsModel> model = iQuestionsRepository.findById(id);
         return model;
     }
 }

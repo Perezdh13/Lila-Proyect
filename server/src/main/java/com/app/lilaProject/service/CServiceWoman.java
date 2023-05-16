@@ -1,7 +1,7 @@
 package com.app.lilaProject.service;
 
-import com.app.lilaProject.entity.CModelWomen;
-import com.app.lilaProject.repository.IRepositoryWoman;
+import com.app.lilaProject.entity.CWomenModel;
+import com.app.lilaProject.repository.IWomanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,29 +12,29 @@ import java.util.Optional;
 @Service
 public class CServiceWoman {
     @Autowired
-    private IRepositoryWoman iRepositoryWoman;
+    private IWomanRepository iWomanRepository;
 
-    public void createConsultation(CModelWomen model){
-        iRepositoryWoman.save(model);
+    public void createConsultation(CWomenModel model){
+        iWomanRepository.save(model);
     }
 
-    public List<CModelWomen> readConsultation(){
-        List<CModelWomen> models = new ArrayList<CModelWomen>(iRepositoryWoman.findAll());
+    public List<CWomenModel> readConsultation(){
+        List<CWomenModel> models = new ArrayList<CWomenModel>(iWomanRepository.findAll());
         return models;
 
     }
-    public Optional<CModelWomen> readConsultationId(Long id){
-        Optional<CModelWomen> model = iRepositoryWoman.findById(id);
+    public Optional<CWomenModel> readConsultationId(Long id){
+        Optional<CWomenModel> model = iWomanRepository.findById(id);
         return model;
     }
 
-    public void updateConsultation(CModelWomen model, Long id){
+    public void updateConsultation(CWomenModel model, Long id){
         model.setId(id);
-        iRepositoryWoman.save(model);
+        iWomanRepository.save(model);
 
     }
 
     public void deleteConsultation(Long id) {
-        iRepositoryWoman.deleteById(id);
+        iWomanRepository.deleteById(id);
     }
 }

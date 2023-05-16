@@ -2,41 +2,41 @@ package com.app.lilaProject.service;
 
 import com.app.lilaProject.DTO.LoginDto;
 import com.app.lilaProject.DTO.UserDto;
-import com.app.lilaProject.entity.User;
-import com.app.lilaProject.repository.UserRepository;
-import com.app.lilaProject.repository.UserService;
+import com.app.lilaProject.entity.CUserModel;
+import com.app.lilaProject.repository.IUserRepository;
+import com.app.lilaProject.repository.IUserService;
 import com.app.lilaProject.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class IUserServiceImpl implements IUserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository IUserRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     public String addUser(UserDto userDto) {
-        User user = new User(
+        CUserModel CUserModel = new CUserModel(
                 userDto.getId(),
                 userDto.getUserName(),
                 userDto.getEmail(),
                 this.passwordEncoder.encode(userDto.getPassword())
         );
-        userRepository.save(user);
-        return user.getUserName();
+        IUserRepository.save(CUserModel);
+        return CUserModel.getUserName();
     }
     private LoginDto loginDto;
     @Override
     public LoginResponse loginUser(LoginDto loginDto) {
         String message = "";
-        User loggedUser = userRepository.findByEmail(loginDto.getEmail());
-        if (loggedUser != null) {
+        CUserModel loggedCUserModel = IUserRepository.findByEmail(loginDto.getEmail());
+        if (loggedCUserModel != null) {
             String password = loginDto.getPassword();
-            String dbPassword = loggedUser.getPassword();
+            String dbPassword = loggedCUserModel.getPassword();
             Boolean passwordIsCorrect = passwordEncoder.matches(password, dbPassword);
 
             if (passwordIsCorrect){

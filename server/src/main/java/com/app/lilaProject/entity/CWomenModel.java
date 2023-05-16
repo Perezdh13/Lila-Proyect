@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @ToString
 @Table(name= "women")
-public class CModelWomen {
+public class CWomenModel {
 
 
     @Id

@@ -2,7 +2,6 @@ package com.app.lilaProject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Entity
 @AllArgsConstructor
@@ -11,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString
 @Table(name= "questions")
-public class CModelQuestions {
+public class CQuestionsModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
