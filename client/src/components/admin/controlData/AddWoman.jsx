@@ -6,7 +6,7 @@ import Form from '../../common/Form';
 
 
 function AddWoman() {
-    const [name, setName] = useState('');
+    const [name, setName] = useState('');console.log(name);
     const [description, setDescription] = useState('');
     const [imrCartoo, setImgCartoon] = useState('');
     const [imgReal, setImgReal] = useState('');
@@ -22,7 +22,7 @@ function AddWoman() {
             ojos: eyes,
             pelo: hair
         };
-
+console.log(womanValues);
         WomenHTTP().createWoman(womanValues)
     }
 
@@ -30,12 +30,12 @@ function AddWoman() {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
             <Form
-                Name={setName}
-                Description={setDescription}
+                onChangeName={(e) => setName(e.target.value)}
+                onChangeDescription={(e) => setDescription(e.target.value)}
                 ImgReal={setImgReal}
                 ImgCartoon={setImgCartoon}
-                Eyes={setEyes}
-                Hair={setHair}
+                onChangeEyes={(e) => setEyes(e.target.value)}
+                onChangeHair={(e) => setHair(e.target.value)}
             />
             
             <Link to="/">

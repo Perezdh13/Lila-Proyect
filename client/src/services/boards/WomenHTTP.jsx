@@ -22,11 +22,17 @@ export const WomenHTTP = () => {
     return response.data
    }
 
+   const updateWoman = async (data) => {
+    const res = await axios.put(`${urlDB}/woman`, data);
+    return res;
+};
+
   return {
     getAllData,
     createWoman,
     deletewoman, 
     getWomanById,
+    updateWoman
   };
 }; 
 
