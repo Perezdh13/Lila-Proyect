@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import InputPhoto from '../../common/InputPhoto'
 import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 import { Link } from 'react-router-dom';
 import Form from '../../common/Form';
@@ -15,14 +14,13 @@ function AddWoman() {
 
     const createWoman = (event) => {
         const womanValues = {
-            Name: name,
-            Description: description,
-            ImgCartoon: imgCartoon,
-            ImgReal: imgReal,
-            Ojos: eyes,
-            Pelo: hair
+            name: name,
+            description: description,
+            imgCartoon: imgCartoon,
+            imgReal: imgReal,
+            ojos: eyes,
+            pelo: hair
         };
-
         WomenHTTP().createWoman(womanValues)
     }
 
