@@ -1,14 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-function InputPhoto({setUrlImg}) {
-    const [file, setFile] = useState(null);
-    const [imagePreview, setImagePreview] = useState(null);
+function InputPhoto(props) {
+    const urlImg = props.urlimg
+    const [file, setFile] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
     const [base64, setBase64] = useState(null);
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         setFile(selectedFile);
-
         const reader = new FileReader();
         reader.onloadend = () => {
             setImagePreview(reader.result);
@@ -28,16 +28,15 @@ function InputPhoto({setUrlImg}) {
                 context.drawImage(image, 0, 0);
                 const base64 = canvas.toDataURL();
                 setBase64(base64);
-                setUrlImg(base64)
+                urlImg(base64)
             };
         }
     }, [imagePreview]);
 
     return (
-        <div>
-            <textarea onChange={(e)=> setUrlImg(e.target.value)} value={base64} required class="form-control" placeholder="Añade una foto"
-                                id="photo"/>
-        <input type="file" onChange={handleFileChange} />
+        <div>         
+            <img src={base64} style={{ width: "8vw", height: "20vh" }} />
+            <input type="file" onChange={handleFileChange} />
         </div>
     );
 }

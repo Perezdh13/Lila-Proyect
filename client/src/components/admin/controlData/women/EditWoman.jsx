@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import Form from '../../../common/Form';
 import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
-import axios from 'axios';
 import { WomenUpdate } from '../../../../services/boards/Women.jsx/WomenUpdate';
 
 
@@ -22,7 +21,8 @@ function EditWoman() {
     useEffect(() => {
         WomenHTTP().getWomanById(id).then((data) => {
             setData(data)
-            console.log(data);
+            setImgCartoon(data.imgCartoon)
+            setImgReal(data.imgReal)
         })
     }, [id])
 
@@ -48,8 +48,8 @@ function EditWoman() {
             <Form
                 Name={data.name} onChangeName={(e) => setName(e.target.value)}
                 Description={data.description} onChangeDescription={(e) => setDescription(e.target.value)}
-                ImgCartoon={data.imgCartoon} 
-                ImgReal={data.imgReal}
+                ImgCartoon={imgCartoon} 
+                ImgReal={imgReal}
                 Eyes={data.ojos} onChangeEyes={(e) => setEyes(e.target.value)}
                 Hair={data.pelo} onChangeHair={(e) => setHair(e.target.value)}
                 

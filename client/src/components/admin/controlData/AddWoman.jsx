@@ -21,8 +21,7 @@ function AddWoman() {
             imgReal: imgReal,
             ojos: eyes,
             pelo: hair
-        };
-console.log(womanValues);
+        };console.log(name);
         WomenHTTP().createWoman(womanValues)
     }
 
@@ -33,14 +32,14 @@ console.log(womanValues);
                 onChangeName={(e) => setName(e.target.value)}
                 onChangeDescription={(e) => setDescription(e.target.value)}
                 ImgReal={setImgReal}
-                ImgCartoon={setImgCartoon}
+                Base64Cartoon={setImgCartoon}
                 onChangeEyes={(e) => setEyes(e.target.value)}
                 onChangeHair={(e) => setHair(e.target.value)}
             />
             
-            <Link to="/">
+            {/* <Link to="/"> */}
                 <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
-            </Link>
+            {/* </Link> */}
         </div>
     )
 }

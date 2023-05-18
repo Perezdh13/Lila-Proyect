@@ -1,25 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputPhoto from './InputPhoto'
 
 function Form(props) {
+    const [imgCartoon, setImgCartoon] = useState(props.ImgCartoon ? props.ImgCartoon : null);
+    const [imgReal, setImgReal] = useState(null)
+
+    const base64Cartoon = (data) => {
+        Array.from(data).forEach(archivo => {
+            var reader = new FileReader();
+            reader.readAsDataURL(archivo);
+            reader.onload = function () {
+                var base64Cartoon = reader.result;
+                setImgCartoon(base64Cartoon)
+            }
+        })
+    }
+    const base64Real = (data) => {
+        Array.from(data).forEach(archivo => {
+            var reader = new FileReader();
+            reader.readAsDataURL(archivo);
+            reader.onload = function () {
+                var base64Real = reader.result;
+                setImgReal(base64Real)
+            }
+        })
+    }
     return (
         <div>
             <div style={{ width: "40vw" }}>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" onChange={props.onChangeName} defaultValue={props.Name}/>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" onChange={props.onChangeName} defaultValue={props.Name} />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={props.onChangeDescription} defaultValue={props.Description}/>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={props.onChangeDescription} defaultValue={props.Description} />
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Foto cartoon</label>
-                    <InputPhoto setUrlImg={props.ImgCartoon} defaultValue={props.ImgCartoon}/>
+                    <div>
+                        <img src={imgCartoon} style={{ width: "8vw", height: "20vh" }} />
+                        <input type="file" onChange={(e) => base64Cartoon(e.target.files)} />
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Foto real</label>
-                    <InputPhoto setUrlImg={props.ImgReal} defaultValue={props.ImgReal}/>
+                    <div>
+                        <img src={imgReal} style={{ width: "8vw", height: "20vh" }} />
+                        <input type="file" onChange={(e) => base64Real(e.target.files)} />
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Color de ojos</label>
