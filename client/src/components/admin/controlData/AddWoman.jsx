@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import InputPhoto from '../../common/InputPhoto'
+import React, { useState } from 'react'
 import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 import { Link } from 'react-router-dom';
 import Form from '../../common/Form';
@@ -27,19 +26,19 @@ function AddWoman() {
 
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-            <div style={{ background: "rgba(211,211,211,0.5)", width: "45vw", height: "90vh", overflow: "auto" }}>
-                <Form
-                    onChangeName={(e) => setName(e.target.value)}
-                    onChangeDescription={(e) => setDescription(e.target.value)}
-                    ImgReal={setImgReal}
-                    ImgCartoon={setImgCartoon}
-                    onChangeEyes={(e) => setEyes(e.target.value)}
-                    onChangeHair={(e) => setHair(e.target.value)}
-                />
-            </div>
-            {/* <Link to="/"> */}
-            <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
-            {/* </Link> */}
+
+            <Form
+                Name={setName}
+                Description={setDescription}
+                ImgReal={setImgReal}
+                ImgCartoon={setImgCartoon}
+                Eyes={setEyes}
+                Hair={setHair}
+            />
+
+            <Link to="/">
+                <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
+            </Link>
         </div>
     )
 }

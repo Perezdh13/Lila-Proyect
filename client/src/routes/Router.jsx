@@ -5,15 +5,16 @@ import WordSearchView from '../views/games/gamesViews/WordSearchView'
 import GamesView from '../views/games/GamesView';
 import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
 import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
-import Learn from '../views/learn/Learn';
+import Learn from '../views/learn/LearnHomeView';
 import Admin from '../views/admin/Admin';
 import LoggedView from '../views/logged/LoggedView';
 import SingUpView from '../views/admin/singUpView/SingUpView';
 import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/WomenTableView';
-import EditWoman from '../components/admin/controlData/women/EditWoman';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
+import LearnHomeView from '../views/learn/LearnHomeView';
+import LearnSpanishWoman from '../views/learn/LearnSpanishWoman';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -36,8 +37,14 @@ function Router() {
     element: <CreateYourAvatarView />
   }, {
     path: "/learn",
-    element: <Learn />
-  }, {
+    element: <LearnHomeView />
+  },{
+    path: "/learn/spanish-woman",
+    element: <LearnSpanishWoman />
+  }, /* {
+    path: "/learn",
+    element: <LearnWomanWorld />
+  } */,{
     path: "/admin",
     element: <Admin />
   }, {

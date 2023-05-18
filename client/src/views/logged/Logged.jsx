@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
+
 function Logged() {
 const rol = "admin"
   const [authorization, setAuthorization] = useState({ display:"none" });
    
-  useEffect(()=>{
+useEffect(()=>{
     if(rol === "admin"){
             setAuthorization({ display: "block" })
         }
 },[])
+
+
 
   return (
     <div>Logged
