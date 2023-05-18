@@ -38,6 +38,7 @@ function InputPhoto({ setUrlImg }) {
             <div style={{ display: "none" }}>
                 <textarea onChange={(e) => setUrlImg(e.target.value)} value={base64} required class="form-control" placeholder="Añade una foto" id="photo" />
             </div>
+            <img src={base64} style={{width:"10vw", height:"20vh"}}/>
             <input type="file" onChange={handleFileChange} />
         </div>
     );

@@ -3,7 +3,7 @@ import InputPhoto from './InputPhoto'
 
 function Form(props) {
     return (
-        <div>
+        <div style={{}}>
             <div style={{ width: "40vw" }}>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
@@ -24,6 +24,7 @@ function Form(props) {
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Color de ojos</label>
                     <select required className="form-control" id="category" onChange={(e) => props.Eyes(e.target.value)}>
+                        <option value="">Escoge un color</option>
                         <option value="negros">Negros</option>
                         <option value="azules">Azules</option>
                         <option value="marrones">Marrones</option>
@@ -31,8 +32,9 @@ function Form(props) {
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Color de ojos</label>
+                    <label for="exampleFormControlInput1" class="form-label">Color de pelo</label>
                     <select required className="form-control" id="category" onChange={(e) => props.Hair(e.target.value)}>
+                        <option value="">Escoge un color</option>
                         <option value="negro">Negro</option>
                         <option value="rubio">Rubio</option>
                         <option value="castaño">Castaño</option>

@@ -28,7 +28,7 @@ function AddWoman() {
 
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-
+<div style={{background:"rgba(211,211,211,0.5)",width:"45vw", height:"90vh", overflow:"auto"}}>
             <Form
                 Name={setName}
                 Description={setDescription}
@@ -37,7 +37,7 @@ function AddWoman() {
                 Eyes={setEyes}
                 Hair={setHair}
             />
-            
+          </div>  
             <Link to="/logged">
                 <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
             </Link>
