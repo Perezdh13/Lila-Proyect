@@ -20,7 +20,7 @@ Así mismo guardar los datos generados por el alumnado tales como el tiempo que 
 
 # Hemos creado también un juego interactivo para la plataforma de ¿Quién es quién?. Utilizamos personajes históricos femeninos que han tenido un gran impacto positivo social.
 
-# Equipo desarrollo[Userflowlila.pdf](https://github.com/Perezdh13/lila-proyect/files/11509199/Userflowlila.pdf)
+# Equipo desarrollo
 
 Gabriel
 Adrián Jaular
@@ -58,10 +58,18 @@ con los stakeholders de LILA.
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/e255dcb7-08f3-48c8-bc6b-368311acfc0d" width="100" height="100">
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/df70b818-6f2e-400c-b5c2-3edeabeffcb5" width="100" height="100">
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/bd2b3eac-2b73-487f-987f-505ff165db63" width="100" height="100">
+<img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/4012ba0f-92bb-4b16-a901-73fb489332ec" width="100" height="100"> 
 
-Hemos utilizado las tecnologías según las necesidades técnicas y de usabilidad que mejor se adaptan al proyecto.
+
+
+
+
+Hemos utilizado las herramientas según las necesidades técnicas y de usabilidad que mejor se adaptan al proyecto.
 
 Adjuntamos los archivos que contienen los diagramas de flow tanto del Login conmo de las interacciones de usuario en nuestra plataforma.
+
+[Userflowlila.pdf](https://github.com/Perezdh13/lila-proyect/files/11509199/Userflowlila.pdf)
+[login.pdf](https://github.com/Perezdh13/lila-proyect/files/11508728/login.pdf)
 
 
 # Instalación
@@ -99,8 +107,7 @@ npm
 
 
 
-[Userflowlila.pdf](https://github.com/Perezdh13/lila-proyect/files/11509199/Userflowlila.pdf)
-[login.pdf](https://github.com/Perezdh13/lila-proyect/files/11508728/login.pdf)
+
 
 
 
