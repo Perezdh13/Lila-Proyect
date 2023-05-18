@@ -1,13 +1,13 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from '../views/home/HomePage';
+import HomePageView from '../views/home/HomePageView';
 import WordSearchView from '../views/games/gamesViews/WordSearchView'
-import Games from '../views/games/Games';
+import GamesView from '../views/games/GamesView';
 import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
 import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
 import Learn from '../views/learn/LearnHomeView';
 import Admin from '../views/admin/Admin';
-import Logged from '../views/logged/Logged';
+import LoggedView from '../views/logged/LoggedView';
 import SingUpView from '../views/admin/singUpView/SingUpView';
 import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
@@ -19,13 +19,13 @@ import LearnSpanishWoman from '../views/learn/LearnSpanishWoman';
 function Router() {
   const router = createBrowserRouter([{
     path: "/",
-    element: <HomePage />
+    element: <HomePageView />
   }, {
     path: "/logged",
-    element: <Logged />
+    element: <LoggedView />
   }, {
     path: "/games",
-    element: <Games />
+    element: <GamesView />
   }, {
     path: "/games/wordSearch",
     element: <WordSearchView />

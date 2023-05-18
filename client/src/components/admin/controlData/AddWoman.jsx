@@ -35,8 +35,8 @@ function AddWoman() {
                 Eyes={setEyes}
                 Hair={setHair}
             />
-
-            <Link to="/">
+            
+            <Link to="/logged">
                 <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
             </Link>
         </div>

@@ -1,4 +1,4 @@
-package com.app.lilaProject.Model;
+package com.app.lilaProject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @ToString
 @Table(name= "women")
-public class CModelWomen {
+public class CWomenModel {
 
 
     @Id

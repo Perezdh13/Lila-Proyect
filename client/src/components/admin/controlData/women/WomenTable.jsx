@@ -9,9 +9,7 @@ function WomenTable() {
     const [women, setWomen] = useState([]); console.log(women);
     const womenValues = women.map(value => ({
         name: value.name,
-        description: value.description,
-        nation: value.ojos
-        
+        description: value.description
     }))
     const header = ['Nombre', 'Descripcion'];
 
@@ -29,44 +27,15 @@ const deleteWoman = () => {
 
 
     return (
-        <div>
-            <div>
+        <div style={{display:"flex",flexDirection:"column",alignItems:"center", justifyContent:"center"}}>
+            <div style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
                 <Link to='create'>
                     <img src={addWoman} style={{ width: "5vh", marginLeft:"60vw" }} />
                 </Link>
             </div>
-            <div className="table-responsive" style={{ width: "50vw", margin: "auto" }}>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        {header.map((header, index) => (
-                            <th key={index}>{header}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {women.map((row, index) => (
-                        <tr key={index}>
-                            <td>{row.name}</td>
-                            <td>{row.description}</td>
-                            
-                            <td>
-                                <Link to={`edit/${row.id}`}>
-                                    <button type="button" className="btn btn-primary">Editar</button>
-                                </Link>
-                                <button onClick={deleteWoman} type="button" className="btn btn-danger">Eliminar</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-            {/* <Table 
-            women={women}
-            id={women.id}
-            head={header} 
-            row={womenValues} 
-            delete={deleteWoman}  /> */}
+            <div style={{background:"rgba(211,211,211,0.5)",width:"55vw", height:"90vh", overflow:"auto"}}>
+            <Table head={header} row={womenValues} delete={deleteWoman} />
+            </div>
         </div>
     )
 }

@@ -4,13 +4,13 @@ import { QuestionsHTTP } from '../../../services/boards/QuestionsHTTP';
 import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png'
 export const QuestionSelectValue = React.createContext();
 function AskSeccion() {
-  const [questions, setQuestions] = useState([]);
-  const [playerQuestion, setPlayerQuestion] = useState(''); console.log(playerQuestion);
-  const [questionType, setQuestionType] = useState('');
-  const [questionValue, setQuestionValue] = useState('');
-  const [isUserTurn, setIsUserTurn] = useState(true);
+  const [questions, setQuestions] = useState([]);console.log(questions);
+  const [playerQuestion, setPlayerQuestion] = useState('');console.log(playerQuestion);
+  const [questionType, setQuestionType] = useState('');console.log(questionType);
+  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
+  const [isUserTurn, setIsUserTurn] = useState(true);console.log(isUserTurn);
   const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" })
-  const [playerAnswer, setPlayerAnswer] = useState('');
+  const [playerAnswer, setPlayerAnswer] = useState('');console.log(playerAnswer);
   const [styleQuestion, setStyleQuestion] = useState({ display: "block" });
   const [styleAnswer, setStyleAnswer] = useState({ display: "none" });
   const [styleUserTurn, setStyleUserTurn] = useState({ display: "block" });
@@ -31,7 +31,7 @@ function AskSeccion() {
     QuestionsHTTP().getQuestions().then((data) => {
       setQuestions(data);
     });
-  }, [])
+  },[])
 
  ////// Custon Event ///////
 
@@ -40,7 +40,7 @@ function AskSeccion() {
       detail: questions
     })
     document.dispatchEvent(questionIA)
-  }, [questions])
+  },[questions])
 
 
   useEffect(() => {
@@ -72,6 +72,7 @@ function AskSeccion() {
       setTimeout(() => setStylePlayerAnswer({ display: "block" }), 2000)
     }
   })
+
   useEffect(() => {
     if (questionValue === '') {
       setStyleQuestion({ display: "block" });
@@ -116,6 +117,10 @@ function AskSeccion() {
                 </div>
                 <IA />
               </div>
+            </div>
+            <div style={{opacity:"0.5"}}>
+              <h2> </h2>
+
             </div>
           </div>
         </div>
