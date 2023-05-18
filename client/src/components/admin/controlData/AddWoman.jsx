@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputPhoto from '../../common/InputPhoto'
 import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import Form from '../../common/Form';
 function AddWoman() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [imrCartoo, setImgCartoon] = useState('');
+    const [imgCartoon, setImgCartoon] = useState('');
     const [imgReal, setImgReal] = useState('');
     const [eyes, setEyes] = useState('');
     const [hair, setHair] = useState('');
@@ -17,12 +17,11 @@ function AddWoman() {
         const womanValues = {
             name: name,
             description: description,
-            imgCartoon: imrCartoo,
+            imgCartoon: imgCartoon,
             imgReal: imgReal,
             ojos: eyes,
             pelo: hair
         };
-
         WomenHTTP().createWoman(womanValues)
     }
 
@@ -30,15 +29,15 @@ function AddWoman() {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
             <Form
-                Name={setName}
-                Description={setDescription}
+                onChangeName={(e) => setName(e.target.value)}
+                onChangeDescription={(e) => setDescription(e.target.value)}
                 ImgReal={setImgReal}
                 ImgCartoon={setImgCartoon}
-                Eyes={setEyes}
-                Hair={setHair}
+                onChangeEyes={(e) => setEyes(e.target.value)}
+                onChangeHair={(e) => setHair(e.target.value)}
             />
             
-            <Link to="/logged">
+            <Link to="/admin/controlData/womenTable">
                 <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
             </Link>
         </div>

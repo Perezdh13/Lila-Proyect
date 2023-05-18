@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Table(props) {
-
-
-  
-
-  
+ 
+    const id = props.id
+    const editUrl = `edit/${id}`
 
     return (
         <div className="table-responsive" style={{ width: "50vw", margin: "auto" }}>
@@ -18,13 +17,15 @@ function Table(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.row.map((row, index) => (
+                    {props.map((row, index) => (
                         <tr key={index}>
                             {Object.values(row).map((value, index) => (
                                 <td key={index}>{value}</td>
                             ))}
                             <td>
-                                <button type="button" className="btn btn-primary">Editar</button>
+                                <Link to={`edit/${props.id}`}>
+                                    <button type="button" className="btn btn-primary">Editar</button>
+                                </Link>
                                 <button onClick={props.delete} type="button" className="btn btn-danger">Eliminar</button>
                             </td>
                         </tr>
