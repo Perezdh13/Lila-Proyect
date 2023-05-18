@@ -3,14 +3,14 @@ import IA from './IA';
 import { QuestionsHTTP } from '../../../services/boards/QuestionsHTTP';
 import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png'
 export const QuestionSelectValue = React.createContext();
-function AskSeccion() {
-  const [questions, setQuestions] = useState([]);console.log(questions);
-  const [playerQuestion, setPlayerQuestion] = useState('');console.log(playerQuestion);
-  const [questionType, setQuestionType] = useState('');console.log(questionType);
-  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
-  const [isUserTurn, setIsUserTurn] = useState(true);console.log(isUserTurn);
-  const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" })
-  const [playerAnswer, setPlayerAnswer] = useState('');console.log(playerAnswer);
+function AskSeccion(props) {
+  const [questions, setQuestions] = useState([]);
+  const [playerQuestion, setPlayerQuestion] = useState('');
+  const [questionType, setQuestionType] = useState('');
+  const [questionValue, setQuestionValue] = useState('');
+  const [isUserTurn, setIsUserTurn] = useState(true);
+  const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" });
+  const [playerAnswer, setPlayerAnswer] = useState('');
   const [styleQuestion, setStyleQuestion] = useState({ display: "block" });
   const [styleAnswer, setStyleAnswer] = useState({ display: "none" });
   const [styleUserTurn, setStyleUserTurn] = useState({ display: "block" });
@@ -25,8 +25,13 @@ function AskSeccion() {
   const resetValues = () => {
     setQuestionValue('');
     setQuestionType('');
+    const callSelectRandomQuestion = new CustomEvent("callSelectRandomQuestion")
+    window.dispatchEvent(callSelectRandomQuestion)
   }
 
+  const changeTurn = () => {
+    setIsUserTurn(false)
+  }
   useEffect(() => {
     QuestionsHTTP().getQuestions().then((data) => {
       setQuestions(data);
@@ -35,8 +40,8 @@ function AskSeccion() {
 
  ////// Custon Event ///////
 
-  useEffect(() => {
-    const questionIA = new CustomEvent("questionsIA", {
+ useEffect(() => {
+    const questionIA = new CustomEvent("dataQuestions", {
       detail: questions
     })
     document.dispatchEvent(questionIA)
@@ -52,7 +57,7 @@ function AskSeccion() {
       setTimeout(() => setPlayerAnswer(event.detail), 2000)
     }
     document.addEventListener("playerAnswer", updatePlayerAnswer)
-  })
+  },[isUserTurn])
 
   useEffect(() => {
     const questionSelected = new CustomEvent("selectedQuestion", {
@@ -69,9 +74,9 @@ function AskSeccion() {
   useEffect(() => {
     if (isUserTurn === false) {
       setTimeout(() => (setIsUserTurn(true), setStylePlayerAnswer({ display: "none" })), 8000)
-      setTimeout(() => setStylePlayerAnswer({ display: "block" }), 2000)
+      setTimeout(() => setStylePlayerAnswer({ display: "block" }), 4000)
     }
-  })
+  },[isUserTurn])
 
   useEffect(() => {
     if (questionValue === '') {
@@ -100,7 +105,8 @@ function AskSeccion() {
         <div style={{ display: "flex" }}>
           <div style={{ width: "10vw" }}>
             <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" onClick={() => resetValues()}>pregunta</button>
-            <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" onClick={() => setIsUserTurn(false)}>Turno de la maquina</button>
+            <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" onClick={() => changeTurn()}>Turno de la maquina</button>
+            
             <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" >Tiempo</button>
           </div>
           <div style={{ width: "40vw", height: "18vh" }}>
