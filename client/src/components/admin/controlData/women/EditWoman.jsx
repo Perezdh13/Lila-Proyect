@@ -62,21 +62,10 @@ function EditWoman() {
   const { id } = useParams();
 
 
-    const [data, setData] = useState('')
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('');
-    const [imgCartoon, setImgCartoon] = useState('');
-    const [imgReal, setImgReal] = useState('');
-    const [eyes, setEyes] = useState('');
-    const [hair, setHair] = useState('');
-    const { id } = useParams();
 
 
     useEffect(() => {
-    WomenHTTP().getWomanById(id).then((data) => {
-      setData(data);
-    })
-  }, [id])
+   
         WomenHTTP().getWomanById(id).then((data) => {
             setData(data)
             setImgCartoon(data.imgCartoon)
@@ -85,9 +74,6 @@ function EditWoman() {
     }, [id])
 
 
-  const editWoman = () => { 
-   
-  };
     const editWoman = () => {
         const newData = {
             id: id,
