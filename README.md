@@ -14,15 +14,14 @@ Después aprenden a identificar situaciones y conductas sexistas, promoviendo la
 El producto final de LILA es la organización de la jornada del día 8 marzo, DÍA INTERNACIONAL DE LA MUJER, en su centro educativo.
 El concepto del proyecto educacional ha sido desarrollado por Valnaloneduca.
 
-# Nuestros clientes necesitaban una plataforma dentro de su proyecto LILA para que el alumnado pudiera acceder a juegos didácticos.
-Así mismo guardar los datos generados por el alumnado
- tales como el tiempo que pasa cada uno en la plataforma o cuántas veces ha hecho login en el último mes. El profesorado es responsable de la creación de cuentas de estudiantes 
- para poder acceder a la plataforma. Así mismo los responsables de LILA cuentan con un tipo de acceso que les permite ver los datos generados tanto por el alumnado como por los miembros
+# Nuestros clientes necesitaban una plataforma dentro de su proyecto LILA para que el alumnado( 6 a 12 años) pudiera acceder a juegos didácticos.
+Así mismo guardar los datos generados por el alumnado tales como el tiempo que pasa cada uno en la plataforma o cuántas veces ha hecho login en el último mes. El profesorado es responsable de la creación de cuentas de estudiantes para poder acceder a la plataforma. Así mismo los responsables de LILA cuentan con un tipo de acceso que les permite ver los datos generados tanto por el alumnado como por los miembros
  docentes, pudiendo añadir nuevos juegos a la plataforma o modificar los datos de los ya existentes.
 
 # Hemos creado también un juego interactivo para la plataforma de ¿Quién es quién?. Utilizamos personajes históricos femeninos que han tenido un gran impacto positivo social.
 
-# Equipo
+# Equipo desarrollo[Userflowlila.pdf](https://github.com/Perezdh13/lila-proyect/files/11509199/Userflowlila.pdf)
+
 Gabriel
 Adrián Jaular
 Pablo Pérez 
@@ -40,38 +39,17 @@ con los stakeholders de LILA.
 
 
 # Distribución del desarrollo técnico del proyecto
+.
+.
+.
+.
+.
+.
+.
 
 
 
 # Tecnologías utilizadas
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/fc5ab167-a4c2-4d2e-bc2a-fae62a0a40ed" width="100" height="100">
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/789696fc-9b19-4db8-b0d5-2fb504b11c32" width="100" height="100">
@@ -80,6 +58,51 @@ con los stakeholders de LILA.
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/e255dcb7-08f3-48c8-bc6b-368311acfc0d" width="100" height="100">
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/df70b818-6f2e-400c-b5c2-3edeabeffcb5" width="100" height="100">
 <img src="https://github.com/Perezdh13/lila-proyect/assets/120021690/bd2b3eac-2b73-487f-987f-505ff165db63" width="100" height="100">
+
+Hemos utilizado las tecnologías según las necesidades técnicas y de usabilidad que mejor se adaptan al proyecto.
+
+Adjuntamos los archivos que contienen los diagramas de flow tanto del Login conmo de las interacciones de usuario en nuestra plataforma.
+
+
+# Instalación
+
+npm
+.
+.
+.
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Userflowlila.pdf](https://github.com/Perezdh13/lila-proyect/files/11509199/Userflowlila.pdf)
+[login.pdf](https://github.com/Perezdh13/lila-proyect/files/11508728/login.pdf)
+
+
 
 
 
