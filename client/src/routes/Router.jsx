@@ -14,6 +14,7 @@ import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/WomenTableView';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
 import LearnHomeView from '../views/learn/LearnHomeView';
+import LearnSpanishWoman from '../views/learn/LearnSpanishWoman';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -37,7 +38,13 @@ function Router() {
   }, {
     path: "/learn",
     element: <LearnHomeView />
-  }, {
+  },{
+    path: "/learn/spanish-woman",
+    element: <LearnSpanishWoman />
+  }, /* {
+    path: "/learn",
+    element: <LearnWomanWorld />
+  } */,{
     path: "/admin",
     element: <Admin />
   }, {
