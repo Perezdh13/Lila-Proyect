@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
 import addWoman from '../../../../assets/img/addWoman.png'
 import { Link, useParams } from 'react-router-dom';
-import { WomenDelete } from '../../../../services/boards/Women.jsx/WomenDelete';
+import { WomenHTTP } from '../../../../services/boards/WomenHTTP';
+import { WomenDelete } from '../../../../services/boards/womenHTTP/WomenDelete';
 function WomenTable() {
     const [women, setWomen] = useState([]); console.log(women);
     const womenValues = women.map(value => ({

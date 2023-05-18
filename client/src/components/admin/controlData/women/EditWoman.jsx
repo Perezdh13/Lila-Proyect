@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import Form from '../../../common/Form';
 import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
-import { WomenUpdate } from '../../../../services/boards/Women.jsx/WomenUpdate';
+import { WomenUpdate } from '../../../../services/boards/womenHTTP/WomenUpdate';
 
 
 
@@ -39,7 +39,15 @@ function EditWoman() {
         console.log(newData);
         WomenUpdate().updateWoman(newData)
     }
-
+    useEffect(() => {
+        const imgData = new CustomEvent("imgData",{
+            detail:{
+                cartoon: imgCartoon,
+                real: imgReal
+            }
+        });
+        document.dispatchEvent(imgData)
+    })
 
 
 
@@ -48,8 +56,8 @@ function EditWoman() {
             <Form
                 Name={data.name} onChangeName={(e) => setName(e.target.value)}
                 Description={data.description} onChangeDescription={(e) => setDescription(e.target.value)}
-                ImgCartoon={imgCartoon} 
-                ImgReal={imgReal}
+                ImgCartoon={setImgCartoon} 
+                ImgReal={setImgReal}
                 Eyes={data.ojos} onChangeEyes={(e) => setEyes(e.target.value)}
                 Hair={data.pelo} onChangeHair={(e) => setHair(e.target.value)}
                 

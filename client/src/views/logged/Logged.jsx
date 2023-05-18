@@ -9,7 +9,7 @@ const rol = "admin"
     if(rol === "admin"){
             setAuthorization({ display: "block" })
         }
-})
+},[])
 
   return (
     <div>Logged

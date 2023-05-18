@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputPhoto from '../../common/InputPhoto'
 import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 import { Link } from 'react-router-dom';
@@ -21,7 +21,7 @@ function AddWoman() {
             imgReal: imgReal,
             ojos: eyes,
             pelo: hair
-        };console.log(name);
+        };
         WomenHTTP().createWoman(womanValues)
     }
 
@@ -32,7 +32,7 @@ function AddWoman() {
                 onChangeName={(e) => setName(e.target.value)}
                 onChangeDescription={(e) => setDescription(e.target.value)}
                 ImgReal={setImgReal}
-                Base64Cartoon={setImgCartoon}
+                ImgCartoon={setImgCartoon}
                 onChangeEyes={(e) => setEyes(e.target.value)}
                 onChangeHair={(e) => setHair(e.target.value)}
             />
