@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { urlDB } from '../../UrlDB';
 
-export const WomenUpdate = () => {
+function WomenUpdate ()  {
 
     const updateWoman = async (data) => {
         const response = await axios.put(`${urlDB}/woman`, data);
@@ -12,3 +12,4 @@ export const WomenUpdate = () => {
         updateWoman
     };
 };
+export default WomenUpdate

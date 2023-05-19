@@ -9,11 +9,11 @@ import Learn from '../views/learn/Learn';
 import Admin from '../views/admin/Admin';
 import LoggedView from '../views/logged/LoggedView';
 import SingUpView from '../views/admin/singUpView/SingUpView';
-import AddWomanView from '../views/admin/controlDataView/AddWomanView';
+import AddWomanView from '../views/admin/controlDataView/women/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
-import WomenTableView from '../views/admin/controlDataView/WomenTableView';
-import EditWoman from '../components/admin/controlData/women/EditWoman';
+import WomenTableView from '../views/admin/controlDataView/women/WomenTableView';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
+
 
 function Router() {
   const router = createBrowserRouter([{
@@ -54,7 +54,7 @@ function Router() {
     element: <AddWomanView />
   },{
     path:"/admin/controlData/womenTable/edit/:id",
-    element: <EditWomanView/>
+    element: <EditWomanView />
   }
   ])
   return (

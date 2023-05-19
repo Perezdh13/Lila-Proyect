@@ -1,6 +1,6 @@
 import React from 'react'
-import MenuControlData from '../../../components/admin/controlData/MenuControlData'
-import WomenTable from '../../../components/admin/controlData/women/WomenTable'
+import MenuControlData from '../../../../components/admin/controlData/MenuControlData'
+import WomenTable from '../../../../components/admin/controlData/women/WomenTable'
 
 function WomenTableView() {
   return (

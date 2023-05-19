@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-import { WomenHTTP } from '../../../services/boards/WomenHTTP';
+import  WomenRead  from '../../../services/boards/womenHTTP/WomenRead'; 
 
 function WomenGroup() {
   const [woman, setWoman] = useState([]);
@@ -19,7 +19,7 @@ function WomenGroup() {
   };
 
   useEffect(() => {
-    WomenHTTP().getAllData().then((data) => {
+    WomenRead().getAllData().then((data) => {
       setWoman(data);
     });    
   }, []);

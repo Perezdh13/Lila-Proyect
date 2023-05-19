@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import Form from '../../../common/Form';
-import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
-import { WomenUpdate } from '../../../../services/boards/womenHTTP/WomenUpdate';
-
-
+import WomenRead from '../../../../services/boards/womenHTTP/WomenRead';
+import WomenUpdate from '../../../../services/boards/womenHTTP/WomenUpdate'
 
 function EditWoman() {
 
@@ -19,7 +17,7 @@ function EditWoman() {
 
 
     useEffect(() => {
-        WomenHTTP().getWomanById(id).then((data) => {
+        WomenRead().getWomanById(id).then((data) => {
             setData(data)
             setImgCartoon(data.imgCartoon)
             setImgReal(data.imgReal)
@@ -62,7 +60,7 @@ function EditWoman() {
                 Hair={data.pelo} onChangeHair={(e) => setHair(e.target.value)}
                 
             />
-            <Link to="/">
+            <Link to="/admin/controlData/womenTable">
                 <button onClick={() => editWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
             </Link>
 

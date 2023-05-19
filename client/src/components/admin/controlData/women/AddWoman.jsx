@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import InputPhoto from '../../common/InputPhoto'
-import { WomenHTTP } from '../../../services/boards/WomenHTTP';
+import React, { useState } from 'react'
+import { WomenCreate } from '../../../../services/boards/womenHTTP/WomenCreate'
+import Form from '../../../common/Form';
 import { Link } from 'react-router-dom';
-import Form from '../../common/Form';
-
-
+ 
 function AddWoman() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -22,7 +20,7 @@ function AddWoman() {
             ojos: eyes,
             pelo: hair
         };
-        WomenHTTP().createWoman(womanValues)
+        WomenCreate().createWoman(womanValues)
     }
 
     return (
@@ -37,9 +35,9 @@ function AddWoman() {
                     onChangeHair={(e) => setHair(e.target.value)}
                 />
             </div>
-            {/* <Link to="/"> */}
+            <Link to="/admin/controlData/womenTable">
             <button onClick={() => createWoman()} type="submit" className="btn btn-dark mt-3">Enviar</button>
-            {/* </Link> */}
+            </Link>
         </div>
     )
 }
