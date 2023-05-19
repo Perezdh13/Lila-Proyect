@@ -10,11 +10,11 @@ function Admin() {
                 </Link>
 
                 <Link to='avatars'>
-                    <button className="btn btn-secondary">Ver avatares de los alumnos</button>
+                    <button className="btn btn-secondary">Ver avatares del alumnado</button>
                 </Link>
 
                 <Link to='studentList'>
-                    <button className="btn btn-secondary">Listado y gestion de alumnos</button>
+                    <button className="btn btn-secondary">Listado y gestion del alumnado</button>
                 </Link>
 
                 <Link to='controlData'>

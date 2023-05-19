@@ -13,8 +13,7 @@ import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/WomenTableView';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
-import LearnHomeView from '../views/learn/LearnHomeView';
-import LearnSpanishWoman from '../views/learn/LearnSpanishWoman';
+import LearnWomanView from '../views/learn/LearnWomanView';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -37,14 +36,8 @@ function Router() {
     element: <CreateYourAvatarView />
   }, {
     path: "/learn",
-    element: <LearnHomeView />
+    element: <LearnWomanView />
   },{
-    path: "/learn/spanish-woman",
-    element: <LearnSpanishWoman />
-  }, /* {
-    path: "/learn",
-    element: <LearnWomanWorld />
-  } */,{
     path: "/admin",
     element: <Admin />
   }, {

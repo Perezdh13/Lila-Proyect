@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { WomenHTTP } from '../../../../services/boards/WomenHTTP'
-import Table from '../../../common/Table';
 import addWoman from '../../../../assets/img/addWoman.png'
-import { Link } from 'react-router-dom';
-
-
+import { Link, useParams } from 'react-router-dom';
+import { WomenHTTP } from '../../../../services/boards/WomenHTTP';
+import { WomenDelete } from '../../../../services/boards/womenHTTP/WomenDelete';
 function WomenTable() {
     const [women, setWomen] = useState([]); console.log(women);
     const womenValues = women.map(value => ({
@@ -13,10 +11,11 @@ function WomenTable() {
     }))
     const header = ['Nombre', 'Descripcion'];
 
-const deleteWoman = () => {
-    WomenHTTP().deleteWoman().then()
-}
-     
+    const deleteWoman = (id) => {
+        WomenDelete().deleteWoman(id)
+        alert("mujer eliminada")
+    }
+
     useEffect(() => {
         WomenHTTP().getAllData().then((res) => {
             setWomen(res)
@@ -27,14 +26,37 @@ const deleteWoman = () => {
 
 
     return (
-        <div style={{display:"flex",flexDirection:"column",alignItems:"center", justifyContent:"center"}}>
-            <div style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <Link to='create'>
-                    <img src={addWoman} style={{ width: "5vh", marginLeft:"60vw" }} />
+                    <img src={addWoman} style={{ width: "5vh", marginLeft: "60vw" }} />
                 </Link>
             </div>
-            <div style={{background:"rgba(211,211,211,0.5)",width:"55vw", height:"90vh", overflow:"auto"}}>
-            <Table head={header} row={womenValues} delete={deleteWoman} />
+            <div className="table-responsive" style={{ width: "50vw", margin: "auto" }}>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            {header.map((header, index) => (
+                                <th key={index}>{header}</th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {women.map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.name}</td>
+                                <td>{row.description}</td>
+
+                                <td>
+                                    <Link to={`edit/${row.id}`}>
+                                        <button type="button" className="btn btn-primary">Editar</button>
+                                    </Link>
+                                    <button onClick={() => deleteWoman(row.id)} type="button" className="btn btn-danger" >Eliminar</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     )
