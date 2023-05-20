@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import WomenHTTP from '../../services/boards/WomenHTTP';
+import WomenRead from '../../services/boards/womenHTTP/WomenRead';
 
 
 function LearnWomen () {
@@ -7,10 +7,9 @@ function LearnWomen () {
   const [opacity, setOpacity] = useState('1')
   
   const [women, setWomen] = useState("")
-  console.log(women)
   
   useEffect(()=>{
-    WomenHTTP().getAllData().then((w)=>{
+    WomenRead().getAllData().then((w)=>{
 setWomen(w)
   })
 },[])

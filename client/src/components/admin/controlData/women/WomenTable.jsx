@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import addWoman from '../../../../assets/img/addWoman.png'
 import { Link } from 'react-router-dom';
 import WomenRead from '../../../../services/boards/womenHTTP/WomenRead';
-import { WomenDelete } from '../../../../services/boards/womenHTTP/WomenDelete';
 function WomenTable() {
     const [women, setWomen] = useState([]); console.log(women);
     const header = ['Nombre', 'Descripcion'];
@@ -12,7 +11,7 @@ function WomenTable() {
     }))
 
     const deleteWoman = (id) => {
-        WomenDelete().deleteWoman(id)
+        WomenRead().deleteWoman(id)
         alert("mujer eliminada")
     }
 
