@@ -1,0 +1,85 @@
+.Bubble {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .texto-contenedor {
+  background-image: url("../../assets/img/BubbleRight.png"); 
+  width: 300px; 
+  height: 240px; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+.texto {
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.texto-contenedor img {
+  width: 25vw;
+  position: absolute;
+  left: 0%; 
+}
+
+.input-contenedor {
+  width: 350px;
+  height: 290px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: flex-end; */
+  margin-top: 6rem;
+  margin-left: 1rem;
+  
+}
+
+.input-contenedor button {
+  margin-left: 50px;
+  margin-top: 10px; 
+}
+
+.input-contenedor label {
+  font-size: 15px;
+  margin-top: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px; 
+}
+
+input {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 3px #000;
+  background-color: #d4d1d1;
+  width: 9rem;
+  height: 2.2rem;
+  
+}
+
+.Bubble {
+  margin-left: 25%;
+  margin-bottom: 25%;
+  position: relative;
+}
+

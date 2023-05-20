@@ -1,50 +1,60 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from '../views/home/HomePage';
+import HomePageView from '../views/home/HomePageView';
 import WordSearchView from '../views/games/gamesViews/WordSearchView'
-import Games from '../views/games/Games';
+import GamesView from '../views/games/GamesView';
 import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
 import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
-import Learn from '../views/learn/Learn';
 import Admin from '../views/admin/Admin';
-import SingUpView from '../views/admin/adminViews/SingUpView'
-import StudentListView from '../views/admin/adminViews/StudentListView'
-import Logged from '../views/logged/Logged';
+import LoggedView from '../views/logged/LoggedView';
+import SingUpView from '../views/admin/singUpView/SingUpView';
+import AddWomanView from '../views/admin/controlDataView/women/AddWomanView';
+import MenuControlData from '../components/admin/controlData/MenuControlData';
+import WomenTableView from '../views/admin/controlDataView/women/WomenTableView';
+import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
+import LearnWomenView from '../views/learn/LearnWomenView'
+
 
 function Router() {
   const router = createBrowserRouter([{
     path: "/",
-    element: <HomePage />
+    element: <HomePageView />
   }, {
     path: "/logged",
-    element: <Logged />
+    element: <LoggedView />
   }, {
     path: "/games",
-    element: <Games />
+    element: <GamesView />
   }, {
     path: "/games/wordSearch",
     element: <WordSearchView />
   }, {
-    path: "games/guessWho",
+    path: "/games/guessWho",
     element: <GuessWhoView />
   }, {
     path: "/games/createYourAvatar",
     element: <CreateYourAvatarView />
   }, {
     path: "/learn",
-    element: <Learn />
-  }, {
+    element: <LearnWomenView />
+  },{
     path: "/admin",
     element: <Admin />
   }, {
     path: "/admin/singUp",
     element: <SingUpView />
   }, {
-    path: "/admin/studentList",
-    element: <StudentListView />
+    path: "/admin/controlData",
+    element: <MenuControlData />
   }, {
-    path: "/admin/avatars",
-    element 
+    path: "/admin/controlData/womenTable",
+    element: <WomenTableView />
+  },{
+    path:"/admin/controlData/womenTable/create",
+    element: <AddWomanView />
+  },{
+    path:"/admin/controlData/womenTable/edit/:id",
+    element: <EditWomanView />
   }
   ])
   return (
