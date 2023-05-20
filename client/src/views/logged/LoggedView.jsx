@@ -11,7 +11,7 @@ function LoggedView() {
     if (rol === "admin") {
       setAuthorization({ display: "block" })
     }
-  })
+  },[rol])
 
   return (
     <div>

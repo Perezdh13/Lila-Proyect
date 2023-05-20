@@ -45,12 +45,12 @@ function Bubble() {
       <div className='container' style={{marginRight:"0px"}}>
         <div className='texto-contenedor' style={{width: "25vw", height:"15vh", position:"relative"}}>
           <img src={BubbleRight} style={{width:"25vw", position:'absolute'}}/>
-          <p className='texto' style={{width:"5vw", position:"relative", marginTop:"17%", marginLeft:"41%", transform:"translate (-50%, -50%)"}}>{texto}</p>
+          <p className='texto' style={{fontSize:"20px", fontWeight:"bold", width:"15vw", position:"relative", marginTop:"20%", marginLeft:"20%", transform:"translate (-50%, -50%)"}}>{texto}</p>
         </div>
         {mostrarInputs && (
           <div className='input-contenedor'>
-            <img src={BubbleFinal} style={{width:"25vw", position:'absolute', zIndex:"-1", marginTop:"9.8%"}}/>
-            <form onSubmit={handleSubmit} style={{marginTop:"10.5rem", height:"2vh"}}>
+            <img src={BubbleFinal} style={{width:"25vw", position:'absolute', zIndex:"1", marginTop:"9.8%"}}/>
+            <form onSubmit={handleSubmit} style={{zIndex:"2", marginTop:"12.5rem", height:"2vh", fontWeight:"bold"}}>
               <label>
                 Nombre 
               </label>

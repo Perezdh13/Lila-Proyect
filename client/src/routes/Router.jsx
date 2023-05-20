@@ -5,7 +5,6 @@ import WordSearchView from '../views/games/gamesViews/WordSearchView'
 import GamesView from '../views/games/GamesView';
 import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
 import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
-import Learn from '../views/learn/LearnHomeView';
 import Admin from '../views/admin/Admin';
 import LoggedView from '../views/logged/LoggedView';
 import SingUpView from '../views/admin/singUpView/SingUpView';
@@ -13,7 +12,7 @@ import AddWomanView from '../views/admin/controlDataView/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/WomenTableView';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
-import LearnWomanView from '../views/learn/LearnWomanView';
+import LearnWomenView from '../views/learn/LearnWomenView';
 
 function Router() {
   const router = createBrowserRouter([{
@@ -36,7 +35,7 @@ function Router() {
     element: <CreateYourAvatarView />
   }, {
     path: "/learn",
-    element: <LearnWomanView />
+    element: <LearnWomenView />
   },{
     path: "/admin",
     element: <Admin />
