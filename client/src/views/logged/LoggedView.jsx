@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import game from '../../assets/img/computer-game.png'
+import game from '../../assets/img/BotónLila.png'
 import learn from '../../assets/img/reading.png'
 import admin from '../../assets/img/admin-panel.png'
 function LoggedView() {
@@ -17,7 +17,7 @@ function LoggedView() {
     <div>
       <div style={{ display: "flex" }}>
         <Link to='/games'>
-          <img src={game} style={{ width: "20vw",margin:"5vw" }} />
+          <img src={game} style={{ width: "25vw",margin:"5vw" }} />
         </Link>
 
         <Link to='/learn'>
