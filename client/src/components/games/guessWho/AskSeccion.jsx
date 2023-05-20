@@ -5,7 +5,7 @@ import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png'
 export const QuestionSelectValue = React.createContext();
 function AskSeccion(props) {
   const [questions, setQuestions] = useState([]);
-  const [playerQuestion, setPlayerQuestion] = useState('');
+  const [playerQuestion, setPlayerQuestion] = useState('');console.log(playerQuestion)
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [isUserTurn, setIsUserTurn] = useState(true);
@@ -15,22 +15,33 @@ function AskSeccion(props) {
   const [styleAnswer, setStyleAnswer] = useState({ display: "none" });
   const [styleUserTurn, setStyleUserTurn] = useState({ display: "block" });
   const [styleIATurn, setStyleIATurn] = useState({ display: "none" });
+  const [buttonIaTurn, setButtonIaTurn] = useState({ width: "8vw", height:"7vh",fontSize: "0.8vw", margin: "0.2vw" });
+  const [buttonQuestion, setButtonQuestion] = useState({ width: "8vw", height:"7vh",fontSize: "0.8vw", margin: "0.2vw" });
+  const [buttonSolve, setButtonSolve] = useState({display:'none'})
+  const [styleText, setStyleText] = useState({ display:"none"})
 
   const handleButtonClick = (question) => {
     setQuestionType(question.type);
     setQuestionValue(question.value);
-    setPlayerQuestion(question.ask)
+    setPlayerQuestion(question.ask);
+    setButtonQuestion({display:'none'})
+    setButtonSolve({ width: "8vw", height:"7vh",fontSize: "0.8vw", margin: "0.2vw" })
+    setTimeout(()=>setStyleText({display:"block"}),5000)
   }
 
   const resetValues = () => {
     setQuestionValue('');
     setQuestionType('');
+    setPlayerQuestion('');
     const callSelectRandomQuestion = new CustomEvent("callSelectRandomQuestion")
     window.dispatchEvent(callSelectRandomQuestion)
   }
 
   const changeTurn = () => {
-    setIsUserTurn(false)
+    setIsUserTurn(false);
+    setQuestionValue('');
+    setQuestionType('');
+    setPlayerQuestion('');
   }
   useEffect(() => {
     QuestionsHTTP().getQuestions().then((data) => {
@@ -73,7 +84,7 @@ function AskSeccion(props) {
 
   useEffect(() => {
     if (isUserTurn === false) {
-      setTimeout(() => (setIsUserTurn(true), setStylePlayerAnswer({ display: "none" })), 8000)
+      setTimeout(() => (setIsUserTurn(true), setStylePlayerAnswer({ display: "none" }),setPlayerAnswer('...')), 8000)
       setTimeout(() => setStylePlayerAnswer({ display: "block" }), 4000)
     }
   },[isUserTurn])
@@ -99,15 +110,14 @@ function AskSeccion(props) {
   }, [isUserTurn])
 
   return (
-    <div style={{ height: "18vh", width: "60vw", margin: "10vh" }}>
+    <div style={{ height: "16vh", width: "60vw", marginTop:"8vh" }}>
       {/* Div turno jugador */}
       <div style={styleUserTurn}>
         <div style={{ display: "flex" }}>
           <div style={{ width: "10vw" }}>
-            <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" onClick={() => resetValues()}>pregunta</button>
-            <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" onClick={() => changeTurn()}>Turno de la maquina</button>
-            
-            <button type="button" style={{ width: "8vw", fontSize: "0.8vw", margin: "0.2vw" }} class="btn btn-info" >Tiempo</button>
+            <button type="button" style={buttonQuestion} class="btn btn-info" onClick={() => resetValues()}>pregunta</button>
+            <button type="button" style={buttonIaTurn} class="btn btn-info" onClick={() => changeTurn()}>Turno de la maquina</button>
+            <button type="button" style={buttonSolve} class="btn btn-info">Resolver</button>
           </div>
           <div style={{ width: "40vw", height: "18vh" }}>
             <div style={styleQuestion}>
@@ -116,17 +126,16 @@ function AskSeccion(props) {
               )}
             </div>
             <div style={styleAnswer}>
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", justifyContent:"space-between" }}>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                   <img style={{ width: "10vw" }} src={bubbleLeft} />
                   <p style={{ position: "absolute", width: "6vw", marginLeft: "0px", marginTop: "3vh", fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{playerQuestion}</p>
                 </div>
+            <div style={styleText}>
+              <h5 style={{opacity:"0.5"}}> Descarta las cartas haciendo click sobre ellas o escoge una de las opciones de la izquierda</h5>
+            </div>
                 <IA />
               </div>
-            </div>
-            <div style={{opacity:"0.5"}}>
-              <h2> </h2>
-
             </div>
           </div>
         </div>
@@ -134,14 +143,14 @@ function AskSeccion(props) {
 
       {/*Div turno IA*/}
       <div style={styleIATurn}>
-        <div style={{ display: "flex" }}>
+        <div style={{background:"grey", display: "flex" }}>
           <div style={stylePlayerAnswer}>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
               <img style={{ width: "10vw" }} src={bubbleLeft} />
               <p style={{ position: "absolute", width: "6vw", marginTop: "3vh", fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{playerAnswer}</p>
             </div>
           </div>
-          <div>
+          <div style={{position:"fixed", marginLeft:"40vw"}}>
             <IA />
           </div>
         </div>
