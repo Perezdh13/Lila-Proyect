@@ -4,15 +4,14 @@ import AskSeccion from './AskSeccion';
 
 function IA(props) {
   const [iAWoman, setIAWoman] = useState('');
-  const [questionsSelected, setQuestionsSelected] = useState([])
   const [iAQuestion, setIAQuestion] = useState('');
   const [questions, setQuestions] = useState(''); 
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
-  const [answer, setAnswer] = useState('...');console.log(answer);
+  const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
-
+  const [playerAnswer, setPlayerAnswer] = useState('');console.log(playerAnswer);
   useEffect(() => {
     if (questionType && questionValue) {
       setTimeout(() => {
@@ -36,9 +35,9 @@ function IA(props) {
     }
   
   useEffect(() => {
-    (isUserTurn === false) ?
-      setTimeout(() => (setAnswer(iAQuestion.ask), setSelectedQuestions(iAQuestion)),2000) :
-      setAnswer('...')
+    (isUserTurn === false) 
+      ? setTimeout(() => (setAnswer(iAQuestion.ask), setSelectedQuestions(iAQuestion)),2000) 
+      : setAnswer('...')
   }, [isUserTurn])
 
   useEffect(() => {
@@ -70,12 +69,18 @@ function IA(props) {
     document.addEventListener("randomWoman", upDateIAWoman);
 
     document.addEventListener("gameTurn", gameTurn);
-
     const iAQuestionEvent = new CustomEvent("iAQuestion", {
       detail: selectedQuestions
     });
     document.dispatchEvent(iAQuestionEvent);
   });
+  useEffect(()=>{
+    const updatePlayerAnswer = event => {
+      setPlayerAnswer(event.detail)
+    }
+    document.addEventListener("playerAnswer", updatePlayerAnswer)
+
+  },[playerAnswer])
 
   return (
     <div>

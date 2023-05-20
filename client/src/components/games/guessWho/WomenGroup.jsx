@@ -3,12 +3,14 @@ import Card from './Card'
 import { WomenHTTP } from '../../../services/boards/WomenHTTP';
 
 function WomenGroup() {
-  const [woman, setWoman] = useState([]);
+  const [woman, setWoman] = useState([]);console.log(woman.length);
+  const [womanGame, setWomanGame] = useState([]);
+  const [womanCount, setWomanCount] = useState(0);
   const [iASelect, setIASelect] = useState('');
   const [discardedCard, setDiscardedCard] = useState('');
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardStyle, setCardStyle] = useState({ display: "block" });
-
+ 
   const selectCard = (woman) => {
     setSelectedCard(woman);
   };
@@ -29,6 +31,15 @@ function WomenGroup() {
     const randomWoman = woman[randomIndex];
     setIASelect(randomWoman);
   }, [woman]);
+
+  useEffect(()=>{    
+    if (woman.length > 0 && womanCount < 20){
+      const randomIndex = Math.floor(Math.random() * woman.length);
+      const randomWoman = woman[randomIndex];
+      setWomanGame(prevState => [...prevState, randomWoman]);
+      setWomanCount(prevCount => prevCount +1);
+    } 
+  },[woman, womanGame])
  
 
 
@@ -37,7 +48,7 @@ function WomenGroup() {
       detail: iASelect
     });
     const women = new CustomEvent("women", {
-      detail: woman
+      detail: womanGame
     })
     document.dispatchEvent(iAWoman);
     document.dispatchEvent(women);
@@ -46,15 +57,15 @@ function WomenGroup() {
 
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", columnGap: "1vw", rowGap: "1vh" }}>
-        {woman.map((woman) => (
+    <div style={{ display: "flex", justifyContent: "center", marginTop:0}}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", columnGap: "1vw", rowGap: "2vh" }}>
+        {womanGame.map((womanGame) => (
           <div >
             <Card 
-            woman={woman} 
-            id={woman.id} 
-            name={woman.name} 
-            imgCartoon={woman.imgCartoon} 
+            woman={womanGame} 
+            id={womanGame.id} 
+            name={womanGame.name} 
+            imgCartoon={womanGame.imgCartoon} 
             />
           </div>
         ))}
