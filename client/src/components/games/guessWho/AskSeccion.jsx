@@ -143,7 +143,7 @@ function AskSeccion(props) {
 
       {/*Div turno IA*/}
       <div style={styleIATurn}>
-        <div style={{background:"grey", display: "flex" }}>
+        <div style={{ display: "flex" }}>
           <div style={stylePlayerAnswer}>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
               <img style={{ width: "10vw" }} src={bubbleLeft} />

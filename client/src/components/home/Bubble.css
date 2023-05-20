@@ -49,17 +49,14 @@
   
 }
 
-
-
 .input-contenedor button {
   margin-left: 50px;
   margin-top: 10px; 
 }
 
 .input-contenedor label {
-  padding: 5px;
-  font-size: 14px;
-  margin-top: 0rem;
+  font-size: 15px;
+  margin-top: 0.5rem;
 }
 
 form {

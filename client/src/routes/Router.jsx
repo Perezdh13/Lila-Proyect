@@ -5,7 +5,6 @@ import WordSearchView from '../views/games/gamesViews/WordSearchView'
 import GamesView from '../views/games/GamesView';
 import GuessWhoView from '../views/games/gamesViews/GuessWhoView';
 import CreateYourAvatarView from '../views/games/gamesViews/CreateYourAvatarView';
-import Learn from '../views/learn/Learn';
 import Admin from '../views/admin/Admin';
 import LoggedView from '../views/logged/LoggedView';
 import SingUpView from '../views/admin/singUpView/SingUpView';
@@ -13,6 +12,7 @@ import AddWomanView from '../views/admin/controlDataView/women/AddWomanView';
 import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/women/WomenTableView';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
+import LearnWomenView from '../views/learn/LearnWomenView'
 
 
 function Router() {
@@ -36,8 +36,8 @@ function Router() {
     element: <CreateYourAvatarView />
   }, {
     path: "/learn",
-    element: <Learn />
-  }, {
+    element: <LearnWomenView />
+  },{
     path: "/admin",
     element: <Admin />
   }, {
