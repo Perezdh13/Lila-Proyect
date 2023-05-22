@@ -6,11 +6,11 @@ function Player() {
   const [women, setWomen] = useState('');
   const [womanSelect, setWomanSelect] = useState('');console.log(womanSelect);
   const [iAQuestion, setIAQuestion] = useState('');
-  const [iAQuestionType, setIAQuestionType] = useState('');console.log(iAQuestionType);
+  const [iAQuestionType, setIAQuestionType] = useState('');
   const [iAQuestionValue, setIAQuestionValue] = useState('');
   const [styleUser, setStyleUser] = useState({ display: "block" });
   const [styleWoman, setStyleWoman] = useState({ display: "none" });
-  const [playerAnswer, setPlayerAnswer] = useState('');console.log(playerAnswer);
+  const [playerAnswer, setPlayerAnswer] = useState('');
   const [isUserTurn,setIsUserTurn] = useState('');
   
   useEffect(() => {  
@@ -56,7 +56,7 @@ function Player() {
     };
     document.addEventListener("iAQuestion", upDateIAQuestion)
     document.addEventListener("gameTurn", gameTurn);
-  })
+  },[playerAnswer, iAQuestion])
 
   return (
     <div style={{ width: "10vw",height:"30vh", marginLeft:"3vw", marginTop:"10vh" }}> 

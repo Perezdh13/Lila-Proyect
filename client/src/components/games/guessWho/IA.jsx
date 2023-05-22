@@ -5,13 +5,14 @@ import AskSeccion from './AskSeccion';
 function IA(props) {
   const [iAWoman, setIAWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
-  const [questions, setQuestions] = useState(''); 
+  const [questions, setQuestions] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
-  const [playerAnswer, setPlayerAnswer] = useState('');console.log(playerAnswer);
+  const [playerAnswer, setPlayerAnswer] = useState('');
+
   useEffect(() => {
     if (questionType && questionValue) {
       setTimeout(() => {
