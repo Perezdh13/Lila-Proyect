@@ -8,22 +8,24 @@ function WomenGroup() {
   const [womanCount, setWomanCount] = useState(0);
   const [iASelect, setIASelect] = useState('');
   const [avalaibleCard, setAvalaibleCard] = useState([]);
-  const [selectedCard, setSelectedCard] = useState([]); 
+  const [selectedCard, setSelectedCard] = useState([]);
 
-useEffect(() =>{
+  useEffect(() => {
     const unselectedWomen = womanGame.filter((woman) => !selectedCard.includes(woman.id));
     const unselectedWomenIds = unselectedWomen.map((woman) => woman.id);
     setAvalaibleCard(unselectedWomenIds)
-},[selectedCard])
+  })
 
 
   const cardClickSelect = (id) => {
-    if (selectedCard.includes(id)) {
-      const updatedSelectCard = selectedCard.filter((cardId) => cardId !== id);console.log(updatedSelectCard);
-      setSelectedCard(updatedSelectCard);
-    } else {
-      setSelectedCard(prevState => [...prevState, id])
-    }
+
+      if (selectedCard.includes(id)) {
+        const updatedSelectCard = selectedCard.filter((cardId) => cardId !== id);
+        setSelectedCard(updatedSelectCard);
+      } else {
+        setSelectedCard(prevState => [...prevState, id])
+      }
+
   }
 
   useEffect(() => {
@@ -41,20 +43,20 @@ useEffect(() =>{
   useEffect(() => {
     if (woman.length > 0 && womanCount < 20) {
       const availableWomen = woman.filter((w) => !womanGame.some((wg) => wg.id === w.id));
- 
-        const randomIndex = Math.floor(Math.random() * availableWomen.length);
-        const randomWoman = availableWomen[randomIndex];
-  
-        setWomanGame((prevState) => [...prevState, randomWoman]);
-        setWomanCount((prevCount) => prevCount + 1);
-    
+
+      const randomIndex = Math.floor(Math.random() * availableWomen.length);
+      const randomWoman = availableWomen[randomIndex];
+
+      setWomanGame((prevState) => [...prevState, randomWoman]);
+      setWomanCount((prevCount) => prevCount + 1);
+
     }
   }, [woman, womanGame]);
-  
+
 
   useEffect(() => {
-    const cardsSelect = new CustomEvent("cardsSelect",{
-      detail:{
+    const cardsSelect = new CustomEvent("cardsSelect", {
+      detail: {
         avalaibleCard,
         selectedCard
       }
@@ -84,6 +86,7 @@ useEffect(() =>{
               name={womanGame.name}
               imgCartoon={womanGame.imgCartoon}
               onCardClick={cardClickSelect}
+              selectedCard={selectedCard.length}
             />
           </div>
         ))}

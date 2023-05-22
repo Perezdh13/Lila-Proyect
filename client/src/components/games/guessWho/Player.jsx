@@ -4,7 +4,7 @@ import secretWoman from '../../../assets/img/secretWoman.jpg'
 
 function Player() {
   const [women, setWomen] = useState('');
-  const [womanSelect, setWomanSelect] = useState('');console.log(womanSelect);
+  const [womanSelect, setWomanSelect] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
   const [iAQuestionType, setIAQuestionType] = useState('');
   const [iAQuestionValue, setIAQuestionValue] = useState('');
@@ -12,6 +12,8 @@ function Player() {
   const [styleWoman, setStyleWoman] = useState({ display: "none" });
   const [playerAnswer, setPlayerAnswer] = useState('');
   const [isUserTurn,setIsUserTurn] = useState('');
+  const [avalaibleCard, setAvalaibleCard] = useState([]);
+  const [selectedCard, setSelectedCard] = useState([]);
   
   useEffect(() => {  
     if(womanSelect && iAQuestionType && iAQuestionValue){
@@ -21,7 +23,14 @@ function Player() {
     } 
     },[iAQuestionType, iAQuestionValue])
     
-
+        useEffect(()=>{
+          const updateCards = event => {
+            setSelectedCard(event.detail.selectedCard)
+            setAvalaibleCard(event.detail.avalaibleCard)
+          }
+          document.addEventListener('cardsSelect',updateCards)
+        })
+  
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * women.length);
     const randomWoman = women[randomIndex];
@@ -69,6 +78,7 @@ function Player() {
             <img src={womanSelect.imgCartoon} style={{width:"10vw", height:"20vh"}}/>
             <div style={{textAlign:"center"}}>
             <h5>{womanSelect.name}</h5>
+            <p>{avalaibleCard}</p>
             </div>
           </div>                
         </div>
