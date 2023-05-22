@@ -1,6 +1,6 @@
 package com.app.lilaProject.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 
 
