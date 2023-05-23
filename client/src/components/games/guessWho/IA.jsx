@@ -1,23 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BubbleRight from '../../../assets/img/Bocadillo.png'
 function IA(props) {
-  const [iAWoman, setIAWoman] = useState(''); console.log(iAWoman);
+  const [iAWoman, setIAWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
+  const [lastIAQuestion, setLastIAQuestion] = useState('')
   const [questions, setQuestions] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
-  const [playerAnswer, setPlayerAnswer] = useState('');
+  const [playerAnswer, setPlayerAnswer] = useState(''); console.log(playerAnswer);
   const [playerResolve, setPlayerResolve] = useState(''); console.log(playerResolve);
+  const [iAResponseResolve, setIAResponseResolve] = useState(''); console.log(iAResponseResolve);
 
   const responseWomanselect = () => {
-    const responseResolve = (iAWoman === playerResolve)
-      ? ('Enhorabuena, as acertado, habia escogido a ' + playerResolve.name)
-      : ('No, te equivocas no e escogido a ' + playerResolve.name)
+      const responseResolve = (iAWoman === playerResolve)
+        ? ('Enhorabuena, as acertado, mi personaje es ' + playerResolve.name)
+        : ('No, te equivocas no e escogido a ' + playerResolve.name)
     setAnswer(responseResolve)
   }
+  
+  useEffect(()=>{
+    if (playerResolve !== ''){
+      responseWomanselect()
+      setPlayerResolve('')
+    }
+  })
+
 
   useEffect(() => {
     if (questionType && questionValue) {
@@ -33,8 +43,12 @@ function IA(props) {
   useEffect(() => {
     if (!iAQuestion || iAQuestion.length === 0) {
       const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-      setIAQuestion(randomQuestion)
-    }
+      const randomQuestion2 = questions[Math.floor(Math.random() * (questions.length +1))];
+        (randomQuestion != lastIAQuestion)
+        ? (setIAQuestion(randomQuestion), setLastIAQuestion(randomQuestion))
+        : (setIAQuestion(randomQuestion2), setLastIAQuestion(randomQuestion2))
+      }
+
   })
 
   const selectRandomQuestion = () => {
@@ -61,10 +75,12 @@ function IA(props) {
     }
     window.addEventListener("callSelectRandomQuestion", callSelectRandomQuestion)
   }, [])
-  
+
   useEffect(() => {
     const resolveWoman = event => {
       setPlayerResolve(event.detail)
+      setAnswer('...');
+      
 
     }
     document.addEventListener('resolveWoman', resolveWoman)
@@ -77,16 +93,17 @@ function IA(props) {
     const upDateIAWoman = event => {
       setIAWoman(event.detail);
     };
+    document.addEventListener("randomWoman", upDateIAWoman);
+
     const upDateQuestionSelect = event => {
       setQuestionType(event.detail.type);
       setQuestionValue(event.detail.value);
     };
+    document.addEventListener("selectedQuestion", upDateQuestionSelect);
 
     const gameTurn = event => {
       setIsUserTurn(event.detail);
     };
-    document.addEventListener("selectedQuestion", upDateQuestionSelect);
-    document.addEventListener("randomWoman", upDateIAWoman);
 
     document.addEventListener("gameTurn", gameTurn);
     const iAQuestionEvent = new CustomEvent("iAQuestion", {

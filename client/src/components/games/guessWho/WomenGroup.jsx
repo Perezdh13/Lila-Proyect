@@ -10,23 +10,32 @@ function WomenGroup() {
   const [avalaibleCard, setAvalaibleCard] = useState([]);
   const [selectedCard, setSelectedCard] = useState([]);
 
-function updateAvalaibleCard() {
+  
+  function updateAvalaibleCard() { 
     const unselectedWomen = womanGame.filter((woman) => !selectedCard.includes(woman.id));
     const unselectedWomenIds = unselectedWomen.map((woman) => woman.id);
     setAvalaibleCard(unselectedWomenIds)
   }
-
+  
   function cardClickSelect(id) {
     if (selectedCard.length < 19 || selectedCard.includes(id)) {
       if (selectedCard.includes(id)) {
         const updatedSelectedCard = selectedCard.filter((cardId) => cardId !== id);
-        setSelectedCard(updatedSelectedCard);
+        setSelectedCard(updatedSelectedCard)
       } else {
         setSelectedCard(prevState => [...prevState, id]);
       }
     }
   };
-
+  useEffect(()=>{
+    updateAvalaibleCard()
+  },[selectedCard])
+  
+  useEffect(()=>{
+    if(womanGame.length >= 0){
+      setAvalaibleCard(womanGame.map((obj)=>{return obj.id}))
+    }
+  },[womanGame])
 
 
   useEffect(() => {
@@ -50,7 +59,6 @@ function updateAvalaibleCard() {
 
       setWomanGame((prevState) => [...prevState, randomWoman]);
       setWomanCount((prevCount) => prevCount + 1);
-
     }
   }, [woman, womanGame]);
 
@@ -87,7 +95,7 @@ function updateAvalaibleCard() {
               name={womanGame.name}
               imgCartoon={womanGame.imgCartoon}
               onCardClick={cardClickSelect}
-              avalaibleCard={updateAvalaibleCard}
+              //avalaibleCard={updateAvalaibleCard}
               selectedCard={selectedCard.length}
             />
           </div>

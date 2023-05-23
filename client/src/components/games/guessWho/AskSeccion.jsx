@@ -87,6 +87,8 @@ function AskSeccion(props) {
     setQuestionType('');
     setPlayerQuestion('');
     setStyleQuestion({ display: "block" });
+    setStyleText2({display:'none'})
+    setStyleResolveText({display:'none'})
     
     const callSelectRandomQuestion = new CustomEvent("callSelectRandomQuestion")
     window.dispatchEvent(callSelectRandomQuestion)
@@ -97,7 +99,8 @@ function AskSeccion(props) {
     setQuestionValue('');
     setQuestionType('');
     setPlayerQuestion('');
-    setStyleText({ display: "none" })
+    setStyleText({ display: "none" });
+    setStyleResolveText({display:'none'});
   }
   useEffect(() => {
     QuestionsHTTP().getQuestions().then((data) => {
@@ -189,7 +192,7 @@ function AskSeccion(props) {
         <div style={{ display: "flex" }}>
           <div style={{ width: "10vw" }}>
             <button type='button' style={buttonQuestionInit} className='btn btn-info' onClick={() => startGame()}>START</button>
-            <button type="button" style={buttonQuestion} className="btn btn-info" onClick={() => resetValues()}> Volver a preguntar</button>
+            <button type="button" style={buttonQuestion} className="btn btn-info" onClick={() => resetValues()}> Preguntar</button>
             <button type="button" style={buttonIaTurn} class="btn btn-info" onClick={() => changeTurn()}>Turno de la maquina</button>
             <button type="button" style={buttonSolve} class="btn btn-info" onClick={()=>resolve()}>Resolver</button>
           </div>

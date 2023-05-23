@@ -23,13 +23,12 @@ function Player() {
     } 
     },[iAQuestionType, iAQuestionValue])
     
-        useEffect(()=>{
-          const updateCards = event => {
-            setSelectedCard(event.detail.selectedCard)
-            setAvalaibleCard(event.detail.avalaibleCard)
-          }
-          document.addEventListener('cardsSelect',updateCards)
-        })
+    useEffect(()=>{
+      const updateCards = event => {
+        setAvalaibleCard(event.detail.avalaibleCard)
+      }
+      document.addEventListener('cardsSelect',updateCards)
+    })
   
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * women.length);
