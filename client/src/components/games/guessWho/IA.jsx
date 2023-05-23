@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import BubbleRight from '../../../assets/img/Bocadillo.png'
 function IA(props) {
   const [iAWoman, setIAWoman] = useState('');
+  const [womenGame, setWomenGame] = useState('');
+  const [possibleWoman, setPosibleWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
   const [lastIAQuestion, setLastIAQuestion] = useState('')
   const [questions, setQuestions] = useState('');
@@ -10,19 +12,48 @@ function IA(props) {
   const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
-  const [playerAnswer, setPlayerAnswer] = useState(''); console.log(playerAnswer);
-  const [playerResolve, setPlayerResolve] = useState(''); console.log(playerResolve);
-  const [iAResponseResolve, setIAResponseResolve] = useState(''); console.log(iAResponseResolve);
+  const [playerAnswer, setPlayerAnswer] = useState('');
+  const [playerResolve, setPlayerResolve] = useState('');
+  const [iAResponseResolve, setIAResponseResolve] = useState('');
+
+  useEffect(() => {
+    const words = playerAnswer.split(' ');
+    const wordKey = "No";
+    //words[0];
+    const wordType = "ojos"
+    //words[2];
+    const wordValue = "azules"
+    // words[4];
+    if (possibleWoman !== '') {
+      const condition = possibleWoman.some((woman) => woman.pelo === wordValue || woman.ojos === wordValue);
+      console.log(condition);
+
+      if (wordKey === 'No' && condition == true) {
+        const womanNo = possibleWoman.filter((woman) => woman.pelo == wordValue || woman.ojos == wordValue)
+
+        const possibleWomanFiltered = possibleWoman.filter((woman) => !womanNo.includes(woman));
+        console.log(possibleWomanFiltered);
+        setPosibleWoman(possibleWomanFiltered);
+      } 
+      // if(wordKey === 'No' && condition == false){
+
+      // }
+    }
+    if (wordKey === 'si') {
+
+    }
+
+  })
 
   const responseWomanselect = () => {
-      const responseResolve = (iAWoman === playerResolve)
-        ? ('Enhorabuena, as acertado, mi personaje es ' + playerResolve.name)
-        : ('No, te equivocas no e escogido a ' + playerResolve.name)
+    const responseResolve = (iAWoman === playerResolve)
+      ? ('Enhorabuena, as acertado, mi personaje es ' + playerResolve.name)
+      : ('No, te equivocas no e escogido a ' + playerResolve.name)
     setAnswer(responseResolve)
   }
-  
-  useEffect(()=>{
-    if (playerResolve !== ''){
+
+  useEffect(() => {
+    if (playerResolve !== '') {
       responseWomanselect()
       setPlayerResolve('')
     }
@@ -43,11 +74,11 @@ function IA(props) {
   useEffect(() => {
     if (!iAQuestion || iAQuestion.length === 0) {
       const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-      const randomQuestion2 = questions[Math.floor(Math.random() * (questions.length +1))];
-        (randomQuestion != lastIAQuestion)
+      const randomQuestion2 = questions[Math.floor(Math.random() * (questions.length + 1))];
+      (randomQuestion != lastIAQuestion)
         ? (setIAQuestion(randomQuestion), setLastIAQuestion(randomQuestion))
         : (setIAQuestion(randomQuestion2), setLastIAQuestion(randomQuestion2))
-      }
+    }
 
   })
 
@@ -76,12 +107,28 @@ function IA(props) {
     window.addEventListener("callSelectRandomQuestion", callSelectRandomQuestion)
   }, [])
 
+
   useEffect(() => {
+    const womenGame = event => {
+      setWomenGame(event.detail);
+      setPosibleWoman(event.detail);
+    }
+    document.addEventListener("women", womenGame)
+  })
+
+  useEffect(() => {
+    // const womenGame = event => {
+    //   setWomenGame(event.detail);
+    //   setPosibleWoman(event.detail);
+    // }
+    // document.addEventListener("women",womenGame)
+    const start = event => {
+      starGame();
+    }
+    window.addEventListener('', start)
     const resolveWoman = event => {
       setPlayerResolve(event.detail)
       setAnswer('...');
-      
-
     }
     document.addEventListener('resolveWoman', resolveWoman)
 

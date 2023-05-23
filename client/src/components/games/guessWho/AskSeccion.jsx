@@ -38,7 +38,6 @@ function AskSeccion(props) {
     if(avalaibleCard.length <= 1 ){
       setStyleResolveText({display:"block",width:'40vw' })
       const resolve = women.find((woman) => woman.id === avalaibleCard[0]);
-      console.log(resolve);
       setPlayesResolve(resolve.name)
       setStyleText({display:"none"})
       setStyleAnswer({display:"none"})
@@ -68,6 +67,8 @@ function AskSeccion(props) {
     setButtonQuestion({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" })
     setButtonQuestionInit({ display: 'none' })
     setinitGame(true)
+    const callStarGame = new CustomEvent('starGame')
+    window.dispatchEvent(callStarGame)
   }
 
   const handleButtonClick = (question) => {
