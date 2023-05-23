@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BubbleRight from '../../../assets/img/Bocadillo.png'
-import AskSeccion from './AskSeccion';
-
 function IA(props) {
   const [iAWoman, setIAWoman] = useState(''); console.log(iAWoman);
   const [iAQuestion, setIAQuestion] = useState('');
@@ -15,7 +13,7 @@ function IA(props) {
   const [playerResolve, setPlayerResolve] = useState(''); console.log(playerResolve);
 
   const responseWomanselect = () => {
-    const responseResolve = (iAWoman.id === playerResolve.id)
+    const responseResolve = (iAWoman === playerResolve)
       ? ('Enhorabuena, as acertado, habia escogido a ' + playerResolve.name)
       : ('No, te equivocas no e escogido a ' + playerResolve.name)
     setAnswer(responseResolve)
@@ -63,10 +61,11 @@ function IA(props) {
     }
     window.addEventListener("callSelectRandomQuestion", callSelectRandomQuestion)
   }, [])
+  
   useEffect(() => {
     const resolveWoman = event => {
       setPlayerResolve(event.detail)
-     
+
     }
     document.addEventListener('resolveWoman', resolveWoman)
 
