@@ -3,7 +3,7 @@ import BubbleRight from '../../../assets/img/Bocadillo.png'
 import AskSeccion from './AskSeccion';
 
 function IA(props) {
-  const [iAWoman, setIAWoman] = useState('');
+  const [iAWoman, setIAWoman] = useState(''); console.log(iAWoman);
   const [iAQuestion, setIAQuestion] = useState('');
   const [questions, setQuestions] = useState('');
   const [questionType, setQuestionType] = useState('');
@@ -12,6 +12,14 @@ function IA(props) {
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
   const [playerAnswer, setPlayerAnswer] = useState('');
+  const [playerResolve, setPlayerResolve] = useState(''); console.log(playerResolve);
+
+  const responseWomanselect = () => {
+    const responseResolve = (iAWoman.id === playerResolve.id)
+      ? ('Enhorabuena, as acertado, habia escogido a ' + playerResolve.name)
+      : ('No, te equivocas no e escogido a ' + playerResolve.name)
+    setAnswer(responseResolve)
+  }
 
   useEffect(() => {
     if (questionType && questionValue) {
@@ -25,28 +33,29 @@ function IA(props) {
   }, [questionType, questionValue])
 
   useEffect(() => {
-    if(!iAQuestion || iAQuestion.length === 0){
+    if (!iAQuestion || iAQuestion.length === 0) {
       const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
       setIAQuestion(randomQuestion)
     }
   })
-  
+
   const selectRandomQuestion = () => {
     setIAQuestion('')
-    }
-  
+  }
+
   useEffect(() => {
-    (isUserTurn === false) 
-      ? setTimeout(() => (setAnswer(iAQuestion.ask), setSelectedQuestions(iAQuestion)),2000) 
+    (isUserTurn === false)
+      ? setTimeout(() => (setAnswer(iAQuestion.ask), setSelectedQuestions(iAQuestion)), 2000)
       : setAnswer('...')
   }, [isUserTurn])
 
   useEffect(() => {
-    if (questions === ''){
-    const upDateQuestion = event => {
-      setQuestions(event.detail);
-    };
-    document.addEventListener("dataQuestions", upDateQuestion);}
+    if (questions === '') {
+      const upDateQuestion = event => {
+        setQuestions(event.detail);
+      };
+      document.addEventListener("dataQuestions", upDateQuestion);
+    }
   })
   useEffect(() => {
     const callSelectRandomQuestion = () => {
@@ -55,6 +64,17 @@ function IA(props) {
     window.addEventListener("callSelectRandomQuestion", callSelectRandomQuestion)
   }, [])
   useEffect(() => {
+    const resolveWoman = event => {
+      setPlayerResolve(event.detail)
+     
+    }
+    document.addEventListener('resolveWoman', resolveWoman)
+
+    const CallResponseWomanSelect = event => {
+      responseWomanselect();
+    }
+    window.addEventListener('responseWomanSelect', CallResponseWomanSelect)
+
     const upDateIAWoman = event => {
       setIAWoman(event.detail);
     };
@@ -75,19 +95,20 @@ function IA(props) {
     });
     document.dispatchEvent(iAQuestionEvent);
   });
-  useEffect(()=>{
+
+  useEffect(() => {
     const updatePlayerAnswer = event => {
       setPlayerAnswer(event.detail)
     }
     document.addEventListener("playerAnswer", updatePlayerAnswer)
 
-  },[playerAnswer])
+  }, [playerAnswer])
 
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img style={{ width: "10vw" }} src={BubbleRight} />
-        <p style={{ position: "absolute", width: "6vw", marginTop: "3vh", fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{answer}</p>
+        <p style={{ position: "absolute", width: "6vw", marginTop: '2.5vh', fontSize: "1vw", color: "black", textShadow: "1px 1px violet" }}>{answer}</p>
       </div>
     </div>
   );

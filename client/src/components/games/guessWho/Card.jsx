@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react'
 function Card(props) {
  
   const [isClicked, setIsClicked] = useState(false);
-console.log(props.selectedCard);
+  
   const handleClick = () => {
     if(props.selectedCard < 19){
     setIsClicked(!isClicked);
     props.onCardClick(props.id);
+    props.avalaibleCard()
   }else{
     setIsClicked(false)
     props.onCardClick(props.id)
+    props.avalaibleCard()
   }
 }
   return (
