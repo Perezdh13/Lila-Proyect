@@ -23,7 +23,7 @@ public class CWomenModel {
     private String imgReal;
     @Column(columnDefinition = "LONGTEXT")
     private String imgCartoon;
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
     @Column(name = "ojos")
     private String ojos;

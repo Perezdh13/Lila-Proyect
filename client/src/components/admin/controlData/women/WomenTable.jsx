@@ -20,7 +20,7 @@ function WomenTable() {
         WomenRead().getAllData().then((res) => {
             setWomen(res)
         })
-    }, [])
+    }, [women])
 
 
 
