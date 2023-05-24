@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BubbleRight from '../../../assets/img/Bocadillo.png'
 function IA(props) {
-  const [iAWoman, setIAWoman] = useState('');
+  const [iAWoman, setIAWoman] = useState('');console.log(iAWoman);
   const [womenGame, setWomenGame] = useState('');
   const [possibleWoman, setPosibleWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
   const [lastIAQuestion, setLastIAQuestion] = useState('')
-  const [questions, setQuestions] = useState('');
-  const [questionType, setQuestionType] = useState('');
-  const [questionValue, setQuestionValue] = useState('');
+  const [questions, setQuestions] = useState('');console.log(questions);
+  const [questionType, setQuestionType] = useState('');console.log(questionType);
+  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
   const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
@@ -62,6 +62,8 @@ function IA(props) {
 
 
   useEffect(() => {
+  
+    
     if (questionType && questionValue) {
       setTimeout(() => {
         const response = (iAWoman[questionType] === questionValue)
@@ -70,15 +72,17 @@ function IA(props) {
         setAnswer(response);
       }, 5000);
     } else setAnswer('...')
+  
   }, [questionType, questionValue])
 
   useEffect(() => {
     if (!iAQuestion || iAQuestion.length === 0) {
       const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
       const randomQuestion2 = questions[Math.floor(Math.random() * (questions.length + 1))];
-      (randomQuestion != lastIAQuestion)
-        ? (setIAQuestion(randomQuestion), setLastIAQuestion(randomQuestion))
-        : (setIAQuestion(randomQuestion2), setLastIAQuestion(randomQuestion2))
+      setIAQuestion(randomQuestion)
+      // (randomQuestion !== lastIAQuestion)
+      //   ? , setLastIAQuestion(randomQuestion))
+      //   : (setIAQuestion(randomQuestion2), setLastIAQuestion(randomQuestion2))
     }
 
   })
@@ -123,10 +127,10 @@ function IA(props) {
     //   setPosibleWoman(event.detail);
     // }
     // document.addEventListener("women",womenGame)
-    const start = event => {
-      starGame();
-    }
-    window.addEventListener('', start)
+    // const start = event => {
+    //   starGame();
+    // }
+    //window.addEventListener('startGame', start)
     const resolveWoman = event => {
       setPlayerResolve(event.detail)
       setAnswer('...');

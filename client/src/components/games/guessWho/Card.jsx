@@ -15,10 +15,14 @@ function Card(props) {
   }
   return (
     <div style={{ opacity: isClicked ? "0.3" : '1' }} onClick={handleClick}>
-      <div class="card" style={{ background: "transparent", width: "7vw", height: "16vh" }}>
+      <div class="card" style={{ background: "transparent", width: "7vw", height: "20vh" }}>
         <img src={props.imgCartoon} style={{ maxHeight: "10vh" }} class="card-img-top" alt="..." />
         <div style={{ textAlign: "center" }}>
           <h6>{props.name}</h6>
+          <div style={{height:"5vh"}}>
+          <p style={{fontSize:'0.6vw', margin:0}}>Pelo: {props.hair}</p>
+         <p style={{fontSize:'0.6vw', margin:0}}>Ojos: {props.eyes}</p>
+        </div>
         </div>
       </div>
     </div>

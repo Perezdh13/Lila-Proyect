@@ -94,6 +94,8 @@ function WomenGroup() {
               id={womanGame.id}
               name={womanGame.name}
               imgCartoon={womanGame.imgCartoon}
+              hair={womanGame.pelo}
+              eyes={womanGame.ojos}
               onCardClick={cardClickSelect}
               //avalaibleCard={updateAvalaibleCard}
               selectedCard={selectedCard.length}

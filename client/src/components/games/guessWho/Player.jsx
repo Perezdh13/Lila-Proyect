@@ -77,7 +77,8 @@ function Player() {
             <img src={womanSelect.imgCartoon} style={{width:"10vw", height:"20vh"}}/>
             <div style={{textAlign:"center"}}>
             <h5>{womanSelect.name}</h5>
-            <p>{avalaibleCard}</p>
+            <p>{womanSelect.pelo}</p>
+            <p>{womanSelect.ojos}</p>
             </div>
           </div>                
         </div>
