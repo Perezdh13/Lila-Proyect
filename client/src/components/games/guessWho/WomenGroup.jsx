@@ -51,7 +51,7 @@ function WomenGroup() {
   }, [woman]);
 
   useEffect(() => {
-    if (woman.length > 0 && womanCount < 20) {
+    if (woman.length > 0 && womanCount < 15) {
       const availableWomen = woman.filter((w) => !womanGame.some((wg) => wg.id === w.id));
 
       const randomIndex = Math.floor(Math.random() * availableWomen.length);

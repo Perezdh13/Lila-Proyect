@@ -18,32 +18,33 @@ function IA(props) {
 
   useEffect(() => {
     const words = playerAnswer.split(' ');
-    const wordKey = "No";
-    //words[0];
-    const wordType = "ojos"
-    //words[2];
-    const wordValue = "azules"
-    // words[4];
+    const wordKey = words[0];
+    const wordType = words[2];
+    const wordValue = words[4];
+
     if (possibleWoman !== '') {
       const condition = possibleWoman.some((woman) => woman.pelo === wordValue || woman.ojos === wordValue);
       console.log(condition);
 
       if (wordKey === 'No' && condition == true) {
         const womanNo = possibleWoman.filter((woman) => woman.pelo == wordValue || woman.ojos == wordValue)
-
+        console.log(womanNo);
         const possibleWomanFiltered = possibleWoman.filter((woman) => !womanNo.includes(woman));
         console.log(possibleWomanFiltered);
         setPosibleWoman(possibleWomanFiltered);
       } 
-      // if(wordKey === 'No' && condition == false){
 
-      // }
+    if (wordKey === 'si' && condition == false) {
+      const womanNo = possibleWoman.filter((woman) => woman.pelo == wordValue || woman.ojos == wordValue)
+      console.log(womanNo);
+              const possibleWomanFiltered = possibleWoman.filter((woman) => !womanNo.includes(woman));
+              console.log(possibleWomanFiltered);
+              setPosibleWoman(possibleWomanFiltered);
     }
-    if (wordKey === 'si') {
+  }
 
-    }
-
-  })
+  
+  },[playerAnswer])
 
   const responseWomanselect = () => {
     const responseResolve = (iAWoman === playerResolve)

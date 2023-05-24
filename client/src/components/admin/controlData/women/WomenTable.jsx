@@ -20,7 +20,7 @@ const deleteWoman = (id) => {
         WomenHTTP().getAllData().then((res) => {
             setWomen(res)
         })
-    }, [])
+    }, [women])
 
 
 
@@ -45,7 +45,7 @@ const deleteWoman = (id) => {
                     {women.map((row, index) => (
                         <tr key={index}>
                             <td>{row.name}</td>
-                            <td>{row.description}</td>
+                            <td>{row.description.slice(0,30)}</td>
                             
                             <td>
                                 <Link to={`edit/${row.id}`}>
