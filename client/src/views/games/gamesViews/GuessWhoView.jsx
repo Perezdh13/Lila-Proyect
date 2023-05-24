@@ -18,4 +18,4 @@ function GuessWhoView() {
   )
 }
 
-export default GuessWhoView
+export default  GuessWhoView
