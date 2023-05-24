@@ -202,7 +202,7 @@ function AskSeccion(props) {
               <h5 style={{ opacity: "0.5" }}>Que quieres hacer </h5>
             </div>
             <div style={styleInitText} >
-              <h5 style={{ opacity: '0.5' }}> Vamos a empezar, selecciona una  carta y a continuacion az click en el boton START para comenzar a jugar</h5>
+              <h5 style={{ opacity: '0.5' }}> Vamos a empezar, selecciona una carta y a continuación haz click en el botón START para comenzar a jugar</h5>
             </div>
             <div style={styleResolveText}>
             <div style={{display:'flex'}}>

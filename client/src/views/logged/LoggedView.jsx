@@ -56,7 +56,7 @@
                   borderRadius: '10px'                            
                 }}>
                   <button onClick={() => setModalVisible(false)} style={{backgroundColor:'#8C52FF', position: 'absolute', bottom: '10px', right: '10px', border: 'none', borderRadius:'5px', padding:'10px', fontWeight: 'bold'}}>Volver</button>
-                  <p style={{fontWeight: 'bold'}}>En "Quién es Quién", tendrás la oportunidad de poner a prueba tus habilidades de 
+                  <p style={{fontWeight: 'bold'}}>En "Quién es Ella", tendrás la oportunidad de poner a prueba tus habilidades de 
                      deducción, estrategia y pensamiento lógico mientras intentas adivinar el personaje 
                      secreto. Cada ronda tendrás que formular preguntas para eliminar posibles opciones, 
                      hasta que logres adivinar el personaje misterioso.<br/>
