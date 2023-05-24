@@ -14,6 +14,9 @@ function MenuControlData() {
           </Link>
           <button className="btn btn-secondary">Gestion de Palabras</button>
           <button className="btn btn-secondary">Gestion de Centros</button>
+          <Link to ="/admin">
+          <button className="btn btn-secondary">Volver</button>
+       </Link>
         </div>
       </div>
     </div>
