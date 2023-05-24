@@ -13,6 +13,7 @@ import MenuControlData from '../components/admin/controlData/MenuControlData';
 import WomenTableView from '../views/admin/controlDataView/women/WomenTableView';
 import EditWomanView from '../views/admin/controlDataView/women/EditWomanView';
 import LearnWomenView from '../views/learn/LearnWomenView'
+import QuestionsTableView from '../views/admin/controlDataView/questions/QuestionsTableView';
 
 
 function Router() {
@@ -46,6 +47,9 @@ function Router() {
   }, {
     path: "/admin/controlData",
     element: <MenuControlData />
+  },{
+    path:"admin/controlData/questionsTable",
+    element:<QuestionsTableView />
   }, {
     path: "/admin/controlData/womenTable",
     element: <WomenTableView />

@@ -18,12 +18,13 @@ function AddWoman() {
             imgCartoon: imgCartoon,
             imgReal: imgReal,
             ojos: eyes,
-            pelo: hair
+            pelo: hair,
         };
         WomenCreate().createWoman(womanValues)
     }
 
     return (
+       
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
             <div style={{ background: "rgba(211,211,211,0.5)", width: "45vw", height: "90vh", overflow: "auto" }}>
                 <Form

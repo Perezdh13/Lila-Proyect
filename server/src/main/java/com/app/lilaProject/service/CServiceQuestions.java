@@ -29,4 +29,13 @@ public class CServiceQuestions {
         Optional<CQuestionsModel> model = iQuestionsRepository.findById(id);
         return model;
     }
+
+    public CQuestionsModel deleteQuestion(Long id) {
+        iQuestionsRepository.deleteById(id);
+        return null;
+    }
+
+    public  void updateQuestion(CQuestionsModel model){
+        iQuestionsRepository.save(model);
+    }
 }

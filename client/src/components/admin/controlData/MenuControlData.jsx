@@ -12,11 +12,13 @@ function MenuControlData() {
           <Link to="/admin/controlData/womenTable">
             <button className="btn btn-secondary">Gestion de Mujeres</button>
           </Link>
-          <button className="btn btn-secondary">Gestion de Palabras</button>
+          <Link to="/admin/controlData/questionsTable">
+            <button className="btn btn-secondary">Gestion de Preguntas</button>
+          </Link>
           <button className="btn btn-secondary">Gestion de Centros</button>
-          <Link to ="/admin">
-          <button className="btn btn-secondary">Volver</button>
-       </Link>
+          <Link to="/admin">
+            <button className="btn btn-secondary">Volver</button>
+          </Link>
         </div>
       </div>
     </div>

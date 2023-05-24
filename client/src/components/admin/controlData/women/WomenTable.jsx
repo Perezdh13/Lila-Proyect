@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import WomenRead from '../../../../services/boards/womenHTTP/WomenRead';
 import { WomenDelete } from '../../../../services/boards/womenHTTP/WomenDelete';
 function WomenTable() {
-    const [women, setWomen] = useState([]); console.log(women);
+    const [women, setWomen] = useState([]);
     const header = ['Nombre', 'Descripcion'];
     const womenValues = women.map(value => ({
         name: value.name,
