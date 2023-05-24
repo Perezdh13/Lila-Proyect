@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import IA from './IA';
-import { QuestionsHTTP } from '../../../services/boards/QuestionsHTTP';
 import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png';
 import WomenRead from '../../../services/boards/womenHTTP/WomenRead';
+import QuestionsRead from '../../../services/boards/questionsHTTP/QuestionsRead';
 function AskSeccion(props) {
   const [women, setWomen] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -104,7 +104,7 @@ function AskSeccion(props) {
     setStyleResolveText({display:'none'});
   }
   useEffect(() => {
-    QuestionsHTTP().getQuestions().then((data) => {
+    QuestionsRead().getQuestions().then((data) => {
       setQuestions(data);
     });
     WomenRead().getAllData().then((res) =>{
