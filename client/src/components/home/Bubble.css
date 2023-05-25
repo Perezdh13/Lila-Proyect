@@ -12,18 +12,6 @@
   justify-content: center;
 }
 
-/* .texto-contenedor {
-  background-image: url("../../assets/img/BubbleRight.png"); 
-  width: 300px; 
-  height: 240px; 
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-
 .texto {
   font-size: 16px;
   line-height: 1.5;
@@ -42,8 +30,6 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: flex-end; */
   margin-top: 6rem;
   margin-left: 1rem;
   
@@ -51,12 +37,13 @@
 
 .input-contenedor button {
   margin-left: 50px;
-  margin-top: 10px; 
+  margin-top: 2vh; 
 }
 
 .input-contenedor label {
   font-size: 15px;
   margin-top: 0.5rem;
+  padding-top: -1rem;
 }
 
 form {

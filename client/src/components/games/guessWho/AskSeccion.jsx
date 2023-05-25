@@ -1,38 +1,97 @@
 import React, { useEffect, useState } from 'react';
 import IA from './IA';
-import { QuestionsHTTP } from '../../../services/boards/QuestionsHTTP';
-import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png'
-export const QuestionSelectValue = React.createContext();
+import bubbleLeft from '../../../assets/img/BocadilloIzquierda.png';
+import WomenRead from '../../../services/boards/womenHTTP/WomenRead';
+import QuestionsRead from '../../../services/boards/questionsHTTP/QuestionsRead';
 function AskSeccion(props) {
+  const [women, setWomen] = useState([]);
   const [questions, setQuestions] = useState([]);
-  const [playerQuestion, setPlayerQuestion] = useState('');console.log(playerQuestion)
+  const [playerQuestion, setPlayerQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [isUserTurn, setIsUserTurn] = useState(true);
-  const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" });
+  const [initGame, setinitGame] = useState(false)
   const [playerAnswer, setPlayerAnswer] = useState('');
-  const [styleQuestion, setStyleQuestion] = useState({ display: "block" });
+  const [playerResolve, setPlayesResolve] = useState('');
+  const [avalaibleCard, setAvalaibleCard] = useState('');
+  const [selectedCard, setSelectedCard] = useState([]);
+  
+  const [stylePlayerAnswer, setStylePlayerAnswer] = useState({ display: "none" });
+  const [styleQuestion, setStyleQuestion] = useState({ display: 'none' });
   const [styleAnswer, setStyleAnswer] = useState({ display: "none" });
   const [styleUserTurn, setStyleUserTurn] = useState({ display: "block" });
   const [styleIATurn, setStyleIATurn] = useState({ display: "none" });
-  const [buttonIaTurn, setButtonIaTurn] = useState({ width: "8vw", height:"7vh",fontSize: "0.8vw", margin: "0.2vw" });
-  const [buttonQuestion, setButtonQuestion] = useState({ width: "8vw", height:"7vh",fontSize: "0.8vw", margin: "0.2vw" });
-  const [buttonSolve, setButtonSolve] = useState({display:'none'})
-  const [styleText, setStyleText] = useState({ display:"none"})
+  const [styleText, setStyleText] = useState({ display: "none" });
+  const [styleText2, setStyleText2] = useState({ display: "none" });
+  const [styleInitText, setStyleInitText] = useState({ display: 'block' });
+  const [styleResolveText, setStyleResolveText] = useState({ display: 'none' })
+  const [styleResolveResponse, setStyleResolveResponse] = useState({display:"none"})
+
+  const [buttonIaTurn, setButtonIaTurn] = useState({ display: "none" });
+  const [buttonQuestion, setButtonQuestion] = useState({ display: "none" });
+  const [buttonSolve, setButtonSolve] = useState({ display: 'none' })
+  const [buttonQuestionInit, setButtonQuestionInit] = useState({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" })
+
+
+
+  const resolve = () => {
+    setStyleQuestion({display:"none"})
+    if(avalaibleCard.length <= 1 ){
+      setStyleResolveText({display:"block",width:'40vw' })
+      const resolve = women.find((woman) => woman.id === avalaibleCard[0]);
+      setPlayesResolve(resolve.name)
+      setStyleText({display:"none"})
+      setStyleAnswer({display:"none"})
+      const resolveWoman = new CustomEvent ('resolveWoman',{
+        detail:resolve
+      })
+      document.dispatchEvent(resolveWoman)
+      
+      const callResponseWomanselect = new CustomEvent ('responseWomanSelect')
+      window.dispatchEvent(callResponseWomanselect)
+   
+    } else {
+      alert('Descarta todas las mujeres menos la que creees que tengo yo')
+    }
+  }
+  
+  useEffect(()=>{
+    const updateCards = event => {
+      setSelectedCard(event.detail.selectedCard)
+      setAvalaibleCard(event.detail.avalaibleCard)
+    }
+    document.addEventListener('cardsSelect',updateCards)
+  })
+  const startGame = () => {
+    setStyleQuestion({ display: 'block'})
+    setStyleInitText({ display: 'none' })
+    setButtonQuestion({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" })
+    setButtonQuestionInit({ display: 'none' })
+    setinitGame(true)
+    const callStarGame = new CustomEvent('starGame')
+    window.dispatchEvent(callStarGame)
+  }
 
   const handleButtonClick = (question) => {
     setQuestionType(question.type);
     setQuestionValue(question.value);
     setPlayerQuestion(question.ask);
-    setButtonQuestion({display:'none'})
-    setButtonSolve({ width: "8vw", height:"7vh",fontSize: "0.8vw", margin: "0.2vw" })
-    setTimeout(()=>setStyleText({display:"block"}),5000)
+    setButtonQuestion({ display: 'none' })
+    setTimeout(() => (
+      setStyleText({ display: "block" }),
+      setButtonIaTurn({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" }),
+      setButtonSolve({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" })
+    ), 5000)
   }
 
   const resetValues = () => {
     setQuestionValue('');
     setQuestionType('');
     setPlayerQuestion('');
+    setStyleQuestion({ display: "block" });
+    setStyleText2({display:'none'})
+    setStyleResolveText({display:'none'})
+    
     const callSelectRandomQuestion = new CustomEvent("callSelectRandomQuestion")
     window.dispatchEvent(callSelectRandomQuestion)
   }
@@ -42,21 +101,26 @@ function AskSeccion(props) {
     setQuestionValue('');
     setQuestionType('');
     setPlayerQuestion('');
+    setStyleText({ display: "none" });
+    setStyleResolveText({display:'none'});
   }
   useEffect(() => {
-    QuestionsHTTP().getQuestions().then((data) => {
+    QuestionsRead().getAllQuestion().then((data) => {
       setQuestions(data);
     });
-  },[])
+    WomenRead().getAllData().then((res) =>{
+      setWomen(res);
+    })
+  }, [])
 
- ////// Custon Event ///////
+  ////// Custon Event ///////
 
- useEffect(() => {
+  useEffect(() => {
     const questionIA = new CustomEvent("dataQuestions", {
       detail: questions
     })
     document.dispatchEvent(questionIA)
-  },[questions])
+  }, [questions])
 
 
   useEffect(() => {
@@ -68,7 +132,7 @@ function AskSeccion(props) {
       setTimeout(() => setPlayerAnswer(event.detail), 2000)
     }
     document.addEventListener("playerAnswer", updatePlayerAnswer)
-  },[isUserTurn])
+  }, [isUserTurn])
 
   useEffect(() => {
     const questionSelected = new CustomEvent("selectedQuestion", {
@@ -84,18 +148,32 @@ function AskSeccion(props) {
 
   useEffect(() => {
     if (isUserTurn === false) {
-      setTimeout(() => (setIsUserTurn(true), setStylePlayerAnswer({ display: "none" }),setPlayerAnswer('...')), 8000)
-      setTimeout(() => setStylePlayerAnswer({ display: "block" }), 4000)
+      setTimeout(() =>
+      (setIsUserTurn(true),
+        setStylePlayerAnswer({ display: "none" }),
+        setPlayerAnswer('...'),
+        setStyleText2({ display: "block" }),
+        setButtonIaTurn({ display: "none" }),
+        setButtonQuestion({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" }),
+        setButtonSolve({ width: "8vw", height: "7vh", fontSize: "0.8vw", margin: "0.2vw" })
+      ), 8000)
+
+      setTimeout(() => (
+        setStylePlayerAnswer({ display: "block" }),
+        setStyleQuestion({ display: "none" })
+      ), 4000)
     }
-  },[isUserTurn])
+  }, [isUserTurn])
 
   useEffect(() => {
-    if (questionValue === '') {
-      setStyleQuestion({ display: "block" });
-      setStyleAnswer({ display: "none" });
-    } else {
-      setStyleQuestion({ display: "none" });
-      setStyleAnswer({ display: "block" });
+    if (initGame !== false) {
+      if (questionValue === '') {
+        setStyleQuestion({ display: "block" });
+        setStyleAnswer({ display: "none" });
+      } else {
+        setStyleQuestion({ display: "none" });
+        setStyleAnswer({ display: "block" });
+      }
     }
   }, [questionValue]);
 
@@ -110,30 +188,43 @@ function AskSeccion(props) {
   }, [isUserTurn])
 
   return (
-    <div style={{ height: "16vh", width: "60vw", marginTop:"8vh" }}>
+    <div style={{ height: "16vh", width: "60vw", marginTop: "8vh" }}>
       {/* Div turno jugador */}
       <div style={styleUserTurn}>
         <div style={{ display: "flex" }}>
           <div style={{ width: "10vw" }}>
-            <button type="button" style={buttonQuestion} class="btn btn-info" onClick={() => resetValues()}>pregunta</button>
+            <button type='button' style={buttonQuestionInit} className='btn btn-info' onClick={() => startGame()}>START</button>
+            <button type="button" style={buttonQuestion} className="btn btn-info" onClick={() => resetValues()}> Preguntar</button>
             <button type="button" style={buttonIaTurn} class="btn btn-info" onClick={() => changeTurn()}>Turno de la maquina</button>
-            <button type="button" style={buttonSolve} class="btn btn-info">Resolver</button>
+            <button type="button" style={buttonSolve} class="btn btn-info" onClick={()=>resolve()}>Resolver</button>
           </div>
           <div style={{ width: "40vw", height: "18vh" }}>
+            <div style={styleText2}>
+              <h5 style={{ opacity: "0.5" }}> Escoje una de las opciones de la izquierda</h5>
+            </div>
+            <div style={styleInitText} >
+              <h5 style={{ opacity: '0.5' }}> Vamos a empezar, selecciona una carta y a continuación haz click en el botón START para comenzar a jugar</h5>
+            </div>
+            <div style={styleResolveText}>
+            <div style={{display:'flex'}}>
+              <h5 style={{ opacity: '0.5' }}>La mujer que has escogido es {playerResolve}</h5>
+              <IA />
+            </div>
+            </div>
             <div style={styleQuestion}>
               {questions.map((question, index) =>
                 <button type="button" class="btn btn" key={index} onClick={() => handleButtonClick(question)}>{question.ask}</button>
               )}
             </div>
             <div style={styleAnswer}>
-              <div style={{ display: "flex", justifyContent:"space-between" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                   <img style={{ width: "10vw" }} src={bubbleLeft} />
                   <p style={{ position: "absolute", width: "6vw", marginLeft: "0px", marginTop: "3vh", fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{playerQuestion}</p>
                 </div>
-            <div style={styleText}>
-              <h5 style={{opacity:"0.5"}}> Descarta las cartas haciendo click sobre ellas o escoge una de las opciones de la izquierda</h5>
-            </div>
+                <div style={styleText}>
+                  <h5 style={{ opacity: "0.5" }}> Descarta las cartas haciendo click sobre ellas o escoge una de las opciones de la izquierda</h5>
+                </div>
                 <IA />
               </div>
             </div>
@@ -150,7 +241,7 @@ function AskSeccion(props) {
               <p style={{ position: "absolute", width: "6vw", marginTop: "3vh", fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{playerAnswer}</p>
             </div>
           </div>
-          <div style={{position:"fixed", marginLeft:"40vw"}}>
+          <div style={{ position: "absolute", marginLeft: "40vw"}}>
             <IA />
           </div>
         </div>

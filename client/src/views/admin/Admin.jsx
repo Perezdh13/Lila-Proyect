@@ -6,7 +6,7 @@ function Admin() {
         <div style={{ backgroundColor: "#8C52FF", position: "fixed", width: "15vw", height: "100%", padding: "20px", borderRight: "1px solid #dee2e6" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "5vh", margin: "5vh" }}>
                 <Link to='singUp'>
-                   
+
                 </Link>
 
                 <Link to='avatars'>
@@ -14,11 +14,14 @@ function Admin() {
                 </Link>
 
                 <Link to='studentList'>
-                    <button className="btn btn-secondary">Listado y gestion del alumnado</button>
+                    <button className="btn btn-secondary">Listado y gestión del alumnado</button>
                 </Link>
 
                 <Link to='controlData'>
                     <button className="btn btn-secondary">Gestionar Datos</button>
+                </Link>
+                <Link to="/logged">
+                    <button className="btn btn-secondary">Volver</button>
                 </Link>
             </div>
         </div>

@@ -1,18 +1,69 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BubbleRight from '../../../assets/img/Bocadillo.png'
-import AskSeccion from './AskSeccion';
-
 function IA(props) {
-  const [iAWoman, setIAWoman] = useState('');
+  const [iAWoman, setIAWoman] = useState('');console.log(iAWoman);
+  const [womenGame, setWomenGame] = useState('');
+  const [possibleWoman, setPosibleWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
-  const [questions, setQuestions] = useState(''); 
+  const [lastIAQuestion, setLastIAQuestion] = useState('')
+  const [questions, setQuestions] = useState('');
   const [questionType, setQuestionType] = useState('');
   const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
-  const [playerAnswer, setPlayerAnswer] = useState('');console.log(playerAnswer);
+  const [playerAnswer, setPlayerAnswer] = useState('');
+  const [playerResolve, setPlayerResolve] = useState('');
+  const [iAResponseResolve, setIAResponseResolve] = useState('');
+
   useEffect(() => {
+    const words = playerAnswer.split(' ');
+    const wordKey = words[0];
+    const wordType = words[2];
+    const wordValue = words[4];
+
+    if (possibleWoman !== '') {
+      const condition = possibleWoman.some((woman) => woman.pelo === wordValue || woman.ojos === wordValue);
+      console.log(condition);
+
+      if (wordKey === 'No' && condition == true) {
+        const womanNo = possibleWoman.filter((woman) => woman.pelo == wordValue || woman.ojos == wordValue)
+        console.log(womanNo);
+        const possibleWomanFiltered = possibleWoman.filter((woman) => !womanNo.includes(woman));
+        console.log(possibleWomanFiltered);
+        setPosibleWoman(possibleWomanFiltered);
+      } 
+
+    if (wordKey === 'si' && condition == false) {
+      const womanNo = possibleWoman.filter((woman) => woman.pelo == wordValue || woman.ojos == wordValue)
+      console.log(womanNo);
+              const possibleWomanFiltered = possibleWoman.filter((woman) => !womanNo.includes(woman));
+              console.log(possibleWomanFiltered);
+              setPosibleWoman(possibleWomanFiltered);
+    }
+  }
+
+  
+  },[playerAnswer])
+
+  const responseWomanselect = () => {
+    const responseResolve = (iAWoman === playerResolve)
+      ? ('Enhorabuena, has acertado, mi personaje es ' + playerResolve.name)
+      : ('No, te equivocas no he escogido a ' + playerResolve.name)
+    setAnswer(responseResolve)
+  }
+
+  useEffect(() => {
+    if (playerResolve !== '') {
+      responseWomanselect()
+      setPlayerResolve('')
+    }
+  })
+
+
+  useEffect(() => {
+  
+    
     if (questionType && questionValue) {
       setTimeout(() => {
         const response = (iAWoman[questionType] === questionValue)
@@ -21,31 +72,38 @@ function IA(props) {
         setAnswer(response);
       }, 5000);
     } else setAnswer('...')
+  
   }, [questionType, questionValue])
 
   useEffect(() => {
-    if(!iAQuestion || iAQuestion.length === 0){
+    if (!iAQuestion || iAQuestion.length === 0) {
       const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+      const randomQuestion2 = questions[Math.floor(Math.random() * (questions.length + 1))];
       setIAQuestion(randomQuestion)
+      // (randomQuestion !== lastIAQuestion)
+      //   ? , setLastIAQuestion(randomQuestion))
+      //   : (setIAQuestion(randomQuestion2), setLastIAQuestion(randomQuestion2))
     }
+
   })
-  
+
   const selectRandomQuestion = () => {
     setIAQuestion('')
-    }
-  
+  }
+
   useEffect(() => {
-    (isUserTurn === false) 
-      ? setTimeout(() => (setAnswer(iAQuestion.ask), setSelectedQuestions(iAQuestion)),2000) 
+    (isUserTurn === false)
+      ? setTimeout(() => (setAnswer(iAQuestion.ask), setSelectedQuestions(iAQuestion)), 2000)
       : setAnswer('...')
   }, [isUserTurn])
 
   useEffect(() => {
-    if (questions === ''){
-    const upDateQuestion = event => {
-      setQuestions(event.detail);
-    };
-    document.addEventListener("dataQuestions", upDateQuestion);}
+    if (questions === '') {
+      const upDateQuestion = event => {
+        setQuestions(event.detail);
+      };
+      document.addEventListener("dataQuestions", upDateQuestion);
+    }
   })
   useEffect(() => {
     const callSelectRandomQuestion = () => {
@@ -53,20 +111,51 @@ function IA(props) {
     }
     window.addEventListener("callSelectRandomQuestion", callSelectRandomQuestion)
   }, [])
+
+
   useEffect(() => {
+    const womenGame = event => {
+      setWomenGame(event.detail);
+      setPosibleWoman(event.detail);
+    }
+    document.addEventListener("women", womenGame)
+  })
+
+  useEffect(() => {
+    // const womenGame = event => {
+    //   setWomenGame(event.detail);
+    //   setPosibleWoman(event.detail);
+    // }
+    // document.addEventListener("women",womenGame)
+    // const start = event => {
+    //   starGame();
+    // }
+    //window.addEventListener('startGame', start)
+    const resolveWoman = event => {
+      setPlayerResolve(event.detail)
+      setAnswer('...');
+    }
+    document.addEventListener('resolveWoman', resolveWoman)
+
+    const CallResponseWomanSelect = event => {
+      responseWomanselect();
+    }
+    window.addEventListener('responseWomanSelect', CallResponseWomanSelect)
+
     const upDateIAWoman = event => {
       setIAWoman(event.detail);
     };
+    document.addEventListener("randomWoman", upDateIAWoman);
+
     const upDateQuestionSelect = event => {
       setQuestionType(event.detail.type);
       setQuestionValue(event.detail.value);
     };
+    document.addEventListener("selectedQuestion", upDateQuestionSelect);
 
     const gameTurn = event => {
       setIsUserTurn(event.detail);
     };
-    document.addEventListener("selectedQuestion", upDateQuestionSelect);
-    document.addEventListener("randomWoman", upDateIAWoman);
 
     document.addEventListener("gameTurn", gameTurn);
     const iAQuestionEvent = new CustomEvent("iAQuestion", {
@@ -74,19 +163,20 @@ function IA(props) {
     });
     document.dispatchEvent(iAQuestionEvent);
   });
-  useEffect(()=>{
+
+  useEffect(() => {
     const updatePlayerAnswer = event => {
       setPlayerAnswer(event.detail)
     }
     document.addEventListener("playerAnswer", updatePlayerAnswer)
 
-  },[playerAnswer])
+  }, [playerAnswer])
 
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img style={{ width: "10vw" }} src={BubbleRight} />
-        <p style={{ position: "absolute", width: "6vw", marginTop: "3vh", fontSize: "1.1vw", color: "black", textShadow: "1px 1px violet" }}>{answer}</p>
+        <p style={{ position: "absolute", width: "6vw", marginTop: '2.5vh', fontSize: "1vw", color: "black", textShadow: "1px 1px violet" }}>{answer}</p>
       </div>
     </div>
   );
