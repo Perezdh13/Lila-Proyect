@@ -104,7 +104,7 @@ function AskSeccion(props) {
     setStyleResolveText({display:'none'});
   }
   useEffect(() => {
-    QuestionsRead().getQuestions().then((data) => {
+    QuestionsRead().getAllQuestion().then((data) => {
       setQuestions(data);
     });
     WomenRead().getAllData().then((res) =>{
