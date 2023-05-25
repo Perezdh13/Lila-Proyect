@@ -14,7 +14,7 @@ function Admin() {
                 </Link>
 
                 <Link to='studentList'>
-                    <button className="btn btn-secondary">Listado y gestion del alumnado</button>
+                    <button className="btn btn-secondary">Listado y gestión del alumnado</button>
                 </Link>
 
                 <Link to='controlData'>

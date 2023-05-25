@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import addWoman from '../../../../assets/img/addWoman.png'
 import { Link } from 'react-router-dom';
 import WomenRead from '../../../../services/boards/womenHTTP/WomenRead';
-import { WomenDelete } from '../../../../services/boards/womenHTTP/WomenDelete';
+import WomenDelete from '../../../../services/boards/womenHTTP/WomenDelete'
 function WomenTable() {
     const [women, setWomen] = useState([]);
-    const header = ['Nombre', 'Descripcion'];
+    const header = ['Nombre', 'Descripción'];
     const womenValues = women.map(value => ({
         name: value.name,
         description: value.description

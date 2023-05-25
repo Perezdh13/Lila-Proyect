@@ -6,9 +6,9 @@ function IA(props) {
   const [possibleWoman, setPosibleWoman] = useState('');
   const [iAQuestion, setIAQuestion] = useState('');
   const [lastIAQuestion, setLastIAQuestion] = useState('')
-  const [questions, setQuestions] = useState('');console.log(questions);
-  const [questionType, setQuestionType] = useState('');console.log(questionType);
-  const [questionValue, setQuestionValue] = useState('');console.log(questionValue);
+  const [questions, setQuestions] = useState('');
+  const [questionType, setQuestionType] = useState('');
+  const [questionValue, setQuestionValue] = useState('');
   const [answer, setAnswer] = useState('...');
   const [isUserTurn, setIsUserTurn] = useState('');
   const [selectedQuestions, setSelectedQuestions] = useState('');
@@ -48,8 +48,8 @@ function IA(props) {
 
   const responseWomanselect = () => {
     const responseResolve = (iAWoman === playerResolve)
-      ? ('Enhorabuena, as acertado, mi personaje es ' + playerResolve.name)
-      : ('No, te equivocas no e escogido a ' + playerResolve.name)
+      ? ('Enhorabuena, has acertado, mi personaje es ' + playerResolve.name)
+      : ('No, te equivocas no he escogido a ' + playerResolve.name)
     setAnswer(responseResolve)
   }
 

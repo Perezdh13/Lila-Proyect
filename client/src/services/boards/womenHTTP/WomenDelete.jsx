@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { urlDB } from '../../UrlDB'
 
-export const WomenDelete = () => {
+function WomenDelete  ()  {
     const deleteWoman = async (id) => {
         const response = await axios.delete(`${urlDB}/woman/${id}`);
         return response.data;
@@ -13,3 +13,4 @@ export const WomenDelete = () => {
 }
   
 }
+export default WomenDelete
